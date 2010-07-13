@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="utf-8" />
+	
+	<title>{% block title %}ADB²{% endblock title %}</title>
+	
+	<link rel="icon" type="image/png" href="{{ MEDIA_URL }}images/favicon.ico" />
+	{% block stylesheets -%}
+	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/master.css" type="text/css" />
+	{#
+	<!--[if IE 8]>
+	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/ie8.css" type="text/css" />
+	<![endif]-->
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="{{ MEDIA_URL }}styles/ie7.css" type="text/css" />
+	<![endif]-->
+	#}
+	{%- endblock stylesheets %}
+	
+	{% block scripts -%}
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}scripts/jquery-1.4.2.js"></script>
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}scripts/master.js"></script>
+	{#
+	<!--[if IE 8]>
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}scripts/ie8.js"></script>
+	<![endif]-->
+	<!--[if IE 7]>
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}scripts/ie7.js"></script>
+	<![endif]-->
+	#}
+	{%- endblock scripts %}
+	
+	{%- block extrahead %}{% endblock extrahead %}
+</head>
+<body id="{% block bodyid %}{% endblock %}">
+{%- block body %}
+	{% block header_container -%}
+	<header>
+		<h1>{% block header %}ADB<sup>2</sup><sub>beta</sub>{% endblock %}</h1>
+	</header>
+	{%- endblock %}
+
+	{% block navigation -%}
+	<nav>
+		<ul>
+			<li id=""><a href="{% url list %}">Home</a></li>
+			<li id="">
+				<a href="#">Liste</a>
+				<ul>
+					<li><a href="#">Film da vedere</a></li>
+					<li><a href="#">Film già visti</a></li>
+					<li><a href="#">Favoriti</a></li>
+					<li><a href="#">Azione</a></li>
+					<li><a href="#"><em>✚ Crea una nuova lista</em></a></li>
+				</ul>
+			</li>
+			<li id="">
+				<a href="#">Ricerca</a>
+				<ul>
+					<li>
+						<form>
+							<input type="text" placeholder="Ricerca per titolo..." />
+						</form>
+					</li>
+					<li id=""><a href="#">Ricerca avanzata</a></li>
+				</ul>
+			</li>
+			<li id="">
+				<a href="#">Impostazioni</a>
+				<ul>
+					<li><a href="#">Profilo</a></li>
+					<li><a href="#">Messaggi &amp; Notifiche</a></li>
+					<li><a href="#">Gestione releases</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	{%- endblock navigation %}
+
+	{% block content %}{%- endblock content %}
+
+	{% block footer -%}
+	<footer>
+		<p>Powered by ADB<sup>2</sup> – The AnimeDB Browser project</p>
+	</footer>
+	{%- endblock footer %}
+{%- endblock %}
+</body>
+</html>

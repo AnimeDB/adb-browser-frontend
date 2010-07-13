@@ -1,0 +1,79 @@
+@import "compass/css3"
+@import "compass/utilities"
+
+body > nav
+    background: $header_background url(../images/glow.png) bottom repeat-x
+    margin-bottom: 3em
+    border-bottom: 1px solid #fff
+    
+    > ul
+        +pie-clearfix
+        width: 750px
+        margin: 0 auto
+        
+        > li
+            display: block
+            float: left
+            position: relative
+            
+            > a:visited, > a:link
+                color: #fff
+                display: block
+                padding: 1.2em 1em
+                margin: 0 0em 0
+                text-shadow: 0 1px 0 #000
+            
+            > a:hover, &:hover
+                background: #38496E url(../images/glow.png) bottom repeat-x
+            
+            &:first-child
+                margin-left: -4em
+                border-left: 1px solid transparent
+            
+            &:hover > ul
+                display: block
+            
+            > ul
+                width: 16em
+                position: absolute
+                top: 100%
+                background: #e6e6e6
+                padding: .2em
+                z-index: 1000
+                border: 1px solid #aaa
+                border-top: 0
+                display: none
+                
+                > li
+                    border-bottom: 1px solid #bbb
+                    //padding: .2em .4em .3em
+                    
+                    & + li
+                        border-top: 1px solid #f3f3f3
+                        
+                        a:link, a:visited
+                            padding-top: .5em
+                        
+                        &:hover
+                            border-top-color: #fff
+                        
+                    &:last-child
+                        border-bottom: 0
+                        
+                        a:link, a:visited
+                            padding-bottom: .4em
+                        
+                    a:link, a:visited
+                        color: #333
+                        display: block
+                        text-shadow: 0 1px 0px #fff
+                        padding: .4em .6em .5em
+                        
+                    a:hover
+                        background: #f0f0f0
+                    
+                input
+                    padding: .3em .2em 
+                    width: 16em
+                    margin: .4em .4em .5em
+    

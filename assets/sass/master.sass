@@ -1,0 +1,39 @@
+@import "compass/css3"
+@import "compass/utilities"
+
++global-reset
++reset-html5
+
+$header_background: #425E87
+$link_hover_background: #FFFCE0
+
+html
+    height: 100%
+    background: #fff
+
+body
+    +box-sizing("border-box")
+    overflow-y: scroll
+    min-height: 100%
+    max-width: 1200px
+    min-width: 890px
+    padding: 0
+    margin: 0 auto
+    border: 1em solid #fff
+    font-size: 12px
+    line-height: 1.4em
+    background: #F3F3F3
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+
+footer
+    text-align: center
+    color: #bbb
+    font-size: .8em
+    padding: 1em 0
+
+@import "header"
+@import "navigation"
+@import "content"
+@import "list"
+@import "details"
+@import "login"
