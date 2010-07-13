@@ -1,0 +1,3 @@
+*.sqlite         # Database
+.sass-cache      # SASS cache
+*.css            # Compiled CSS files
