@@ -37,6 +37,9 @@ class Timedelta(object):
     
     def __eq__(self, other):
         return self.duration == other.duration
+    
+    def __str__(self):
+        return str(self.duration)
 
 class DurationField(models.IntegerField):
     """
@@ -68,6 +71,10 @@ class List(models.Model):
         unique_together = (
             ('name', 'user'),
         )
+        
+        permissions = (
+            ("can_use_lists", "Can use lists"),
+        )
     
     def __str__(self):
         return self.name.encode('utf-8')
@@ -80,19 +87,25 @@ class Genre(models.Model):
     A film genre identified in the system with a unique name.
     """
     name = models.CharField(unique=True, max_length=100)
+    
+    def __unicode__(self):
+        return self.name
 
 class Actor(models.Model):
     """
     An actor identified in the system with a unique name.
     """
     name = models.CharField(unique=True, max_length=100)
+    
+    def __unicode__(self):
+        return self.name
 
 class Movie(models.Model):
     """
     A movie along with its metadata.
     """
-    name = models.CharField(max_length=100)
-    original_name = models.CharField(max_length=100, null=True, blank=True)
+    title = models.CharField(max_length=100)
+    original_title = models.CharField(max_length=100, null=True, blank=True)
     
     genres = models.ManyToManyField(Genre)
     cast = models.ManyToManyField(Actor)
@@ -103,6 +116,23 @@ class Movie(models.Model):
     meta_origin = models.URLField(verify_exists=False)
     poster_origin = models.URLField(verify_exists=False, blank=True, null=True)
     
+    class Meta:
+        permissions = (
+            ('can_browse', 'Can browse movies'),
+        )
+    
+    def __unicode__(self):
+        return u'%s (%d)' % (self.title, self.year)
+
+#class MoreLink(models.Model):
+#    """
+#    A link to an external resource describing the movie
+#    """
+#    title = models.CharField(max_length=100)
+#    url = models.URLField(verify_exists=False)
+#    visits = models.PositiveIntegerField(default=0)
+#    movie = models.ForeignKey(Movie, related_name='links')
+
 class Service(models.Model):
     """
     The service used to publish a release.
