@@ -5,6 +5,37 @@ body > nav
     background: $header_background url(../images/glow.png) bottom repeat-x
     margin-bottom: 3em
     border-bottom: 1px solid #fff
+    position: relative
+    z-index: 100
+    min-height: 3.75em
+    
+    > p
+        position: absolute
+        top: 0
+        right: 0
+        margin: 0
+        color: rgba(255, 255, 255, .4)
+        padding: 1.3em .5em 1.1em
+        text-shadow: 0 1px 0 $header_background
+        
+        > span, > a:visited, > a:link
+            color: #fff
+            text-shadow: 0 1px 0 #000
+            display: inline-block
+            padding: 1.2em .8em
+            margin: -1.3em -.3em -1.1em -.6em
+        
+        > a:hover
+            background: #38496E url(../images/glow.png) bottom repeat-x
+            //background: none
+        
+        > a:last-child, > a:last-child
+            margin-right: .5em
+            margin-left: 0
+            padding: 1.2em .8em
+            
+            &:hover
+                background: #38496E url(../images/glow.png) bottom repeat-x
     
     > ul
         +pie-clearfix
@@ -19,7 +50,7 @@ body > nav
             > a:visited, > a:link
                 color: #fff
                 display: block
-                padding: 1.2em 1em
+                padding: 1.3em 1em 1.2em
                 margin: 0 0em 0
                 text-shadow: 0 1px 0 #000
             
@@ -74,6 +105,6 @@ body > nav
                     
                 input
                     padding: .3em .2em 
-                    width: 16em
+                    width: 16.8em
                     margin: .4em .4em .5em
     

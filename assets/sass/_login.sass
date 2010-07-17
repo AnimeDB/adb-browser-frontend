@@ -1,75 +1,24 @@
-body#login
-    background: $header_background
-    position: relative
-    padding-bottom: 3em
-    
-    > section
-        //background: #fff
-        width: 400px
-        margin: 10em auto 0
+#login
+    section.login
+        +pie-clearfix
         
         h1
+            font-weight: bold
             font-size: 2em
-            color: #fff
-            text-align: center
-            text-shadow: 1px 1px 0px #000
-            
+            color: #344558
+            margin-bottom: .8em
+            font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
+            -webkit-font-smoothing: antialiased
+        
+        p
+            color: #444
+    
         form
-            +border-radius(10px)
-            padding: 2em
-            margin: 1em 0
-            //background: #fff
-            
-            label
-                color: #333
-                font-size: 1.2em
-                color: #fff
-                text-shadow: 1px 1px 0px #000
-            
-            input, button
-                +box-sizing("border-box")
-                +border-radius(8px)
-                border: 0
-                font-family: helvetica, sans-serif
-                display: block
-                width: 100%
-                margin: 5px 0 1em 0
-                font-size: 1.8em
-                padding: 10px
-                
-                &:focus
-                    outline: none
-            
-            input[type=password]
-                font-size: 2.5em
-                line-height: 1em
-                padding: 10px 10px 0
-                margin-bottom: 0
-            
-            button
-                width: auto
-                padding: 10px 20px
-                font-size: 1.5em
-                color: #fff
-                margin-top: 30px
-                background: rgba(255, 255, 255, .15)
-                text-shadow: 1px 1px 0px #000
-                
-                &:hover
-                    background: rgba(255, 255, 255, .2)
-                    cursor: pointer
-                
-                &:focus
-                
-                &:active
-                    margin-top: 31px
-                    padding-bottom: 9px
-                    background: rgba(255, 255, 255, .15)
-                    +box-shadow(#21324E, 0, -1px, 1px)
-    > footer
-        color: rgba(255, 255, 255, .5)
-        position: absolute
-        width: 400px
-        left: 50%
-        margin-left: -200px
-        bottom: .25em
+            float: left
+            padding-right: 3em
+            margin-right: 2em
+            border-right: 1px solid #eee
+        
+            h1
+                margin-bottom: .2em
+    

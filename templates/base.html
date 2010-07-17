@@ -43,8 +43,9 @@
 
 	{% block navigation -%}
 	<nav>
+		{% if user.is_authenticated() -%}
 		<ul>
-			<li id=""><a href="{% url list %}">Home</a></li>
+			<li id=""><a href="/">Home</a></li>
 			<li id="">
 				<a href="#">Liste</a>
 				<ul>
@@ -75,6 +76,12 @@
 				</ul>
 			</li>
 		</ul>
+		<p>Benvenuto <span>{{ user.username }}</span> • <a href="{% url logout %}">Esci</a></p>
+		{% else -%}
+		<ul>
+		</ul>
+		<p>Benvenuto <span>Visitatore</span> • <a href="{% url login %}?next={{ request.path }}">Entra</a></p>
+		{%- endif %}
 	</nav>
 	{%- endblock navigation %}
 

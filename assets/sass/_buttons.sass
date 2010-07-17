@@ -1,0 +1,52 @@
+button, .button
+    +border-radius(4px)
+    +box-sizing(border-box)
+    +box-shadow(1px 1px 1px #eee)
+    display: inline-block
+    font-weight: bold
+    padding: 1px
+    color: #5a5a5a
+    border: 1px solid #C6C6C6
+    background: #fff
+    cursor: pointer
+    text-align: center
+    font-size: 1.1em
+    -moz-apperance: none
+    
+    &:visited
+        color: #5a5a5a
+
+    span
+        +border-radius(2px)
+        +box-sizing(border-box)
+        +linear-gradient(color-stops(#eee, #ddd))
+        text-shadow: 0 1px 0 #fff
+        line-height: 1.9em
+        padding: 0 1em .1em 1em
+        display: inline-block
+        width: 100%
+    
+button:not([disabled]), .button:not(.disabled)
+    -webkit-user-focus: ignore
+    -moz-user-focus: ignore
+    user-focus: ignore
+
+    &:hover, &:focus
+        border: 1px solid #aaa
+        background: #fff
+    
+        span
+            +linear-gradient(color-stops(#eee, #c8c8c8))
+        
+    &:active span
+        +linear-gradient(color-stops(#ddd, #eee))
+        color: #777
+        text-shadow: 0 -1px 0 #fff
+
+button[disabled], .button.disabled
+    opacity: 0.8
+    cursor: default
+    border-color: #ccc
+
+    span
+        color: #999
