@@ -1,4 +1,4 @@
-from coffin.conf.urls.defaults import *
+from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
@@ -6,6 +6,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
+    url(r'^login.html$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
+    url(r'^logout.html$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
 )
 
 if settings.DEBUG:

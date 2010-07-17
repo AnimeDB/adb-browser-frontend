@@ -59,9 +59,17 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # List of callables that know how to import templates from various sources.
+JINJA2_TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
+)
+
+JINJA2_DISABLED_APPS = (
+    'admin',
+)
+
 TEMPLATE_LOADERS = (
-    'django.template.loaders.app_directories.load_template_source',
-    'django.template.loaders.filesystem.load_template_source',
+    'coffin.template.loaders.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -83,13 +91,11 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_BASE, 'templates'),
 )
 INSTALLED_APPS = (
-    'coffin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    
     'collection',
 )

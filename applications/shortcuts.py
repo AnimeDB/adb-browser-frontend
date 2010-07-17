@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from coffin import shortcuts
-
+from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
