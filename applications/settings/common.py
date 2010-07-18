@@ -85,6 +85,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
+LOGIN_URL = '/login.html'
+
 ROOT_URLCONF = 'applications.urls'
 
 TEMPLATE_DIRS = (

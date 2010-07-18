@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+letters = map(chr, range(ord('A'), ord('Z') + 1)) + ['0-9', '@!']
+letters_set = set(letters)
+
 class Timedelta(object):
     """
     Provides a simpler timedelta object, which holds minutes of duration and
@@ -119,6 +122,13 @@ class Movie(models.Model):
     class Meta:
         permissions = (
             ('can_browse', 'Can browse movies'),
+        )
+        
+        ordering = (
+            'title',
+            'original_title',
+            'year',
+            'duration'
         )
     
     def __unicode__(self):

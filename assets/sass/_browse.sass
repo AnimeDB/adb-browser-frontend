@@ -1,0 +1,45 @@
+#browse
+    > section
+        +pie-clearfix
+        
+        > nav
+            float: left
+            width: 3em
+            margin-left: -6em
+            
+            ul
+                width: 100%
+            
+            li
+                +box-sizing(border-box)
+                display: block
+                width: 100%
+                font-size: 1.3em
+                line-height: 1.8em
+                
+                text-align: center
+                
+                a
+                    +border-left-radius(4px)
+                    display: block
+                    border-right: 1px solid #ddd
+                
+                a:hover
+                    background: rgba(255, 255, 255, .9)
+                    border-right: 1px solid #ddd
+                
+                &.selected
+                    a
+                        background: #fff
+                        border: 1px solid #ddd
+                        border-right: 1px solid #fff
+                        
+        table
+            width: 100%
+            
+            td
+                line-height: 1.5em
+                padding: .4em .3em
+                border-bottom: 1px solid #ccc
+                
+                    

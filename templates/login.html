@@ -10,7 +10,7 @@
 			{% csrf_token %}
 			
 			{% if form.errors -%}
-			<p>Il nome utente o la password inseriti non sono corretti. Per favore prova di nuovo.</p>
+			<p class="error">Il nome utente o la password inseriti non sono corretti. Per favore prova di nuovo.</p>
 			
 			{% endif -%}
 			<fieldset>

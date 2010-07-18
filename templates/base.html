@@ -45,7 +45,8 @@
 	<nav>
 		{% if user.is_authenticated() -%}
 		<ul>
-			<li id=""><a href="/">Home</a></li>
+			<li id=""><a href="{% url index %}">Home</a></li>
+			<li id=""><a href="{% url collection_browse %}">Sfoglia</a></li>
 			<li id="">
 				<a href="#">Liste</a>
 				<ul>

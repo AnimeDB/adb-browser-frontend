@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.template.loader import render_to_string
+from django.shortcuts import render_to_response as r2r
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
@@ -9,11 +9,15 @@ def render_to_string(template, context={}, request=None):
         context_instance = RequestContext(request)
     else:
         context_instance = None
-    return shortcuts.render_to_string(template, context, context_instance)
+    return render_to_string(template, context, context_instance)
  
 def render_to_response(template, context={}, request=None, mimetype="text/html"):
-    response = render_to_string(template, context, request)
-    return HttpResponse(response, mimetype=mimetype)
+    if request:
+        context_instance = RequestContext(request)
+    else:
+        context_instance = None
+    
+    return r2r(template, context, context_instance, mimetype=mimetype)
 
 def render_to_mail(subject, sender, recipients, text_template, html_template, context, request=None):
     text_message = render_to_string(text_template, context, request)
