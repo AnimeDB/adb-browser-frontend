@@ -2,7 +2,11 @@
     > section
         +pie-clearfix
         
+        h1
+            float: left
+        
         > nav
+            clear: both
             float: left
             width: 3em
             margin-left: -6em
@@ -22,18 +26,39 @@
                 a
                     +border-left-radius(4px)
                     display: block
+                    border: 1px solid transparent
                     border-right: 1px solid #ddd
+                    font-family: Georgia
+                    color: #777
                 
                 a:hover
                     background: rgba(255, 255, 255, .9)
                     border-right: 1px solid #ddd
+                    color: $link_color
                 
                 &.selected
                     a
+                        +border-left-radius(8px)
+                        font-size: 2em
+                        font-weight: bold
+                        padding: .3em 0
+                        width: 1.6em
+                        margin-left: -.45em
                         background: #fff
                         border: 1px solid #ddd
                         border-right: 1px solid #fff
+                        color: #444
+                        cursor: default
                         
+                        &:hover
+                            text-decoration: none
+        
+        form
+            float: right
+        
+            input
+                width: 16em
+        
         table
             width: 100%
             

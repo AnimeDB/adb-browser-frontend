@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+
+from os.path import join, dirname
+loadapp("config:%s" % join(dirname(__file__), 'config.ini#dev'))
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.

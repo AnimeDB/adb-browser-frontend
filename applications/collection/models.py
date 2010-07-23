@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-letters = map(chr, range(ord('A'), ord('Z') + 1)) + ['0-9', '@!']
+letters = map(chr, range(ord('A'), ord('Z') + 1)) + ['09', '@!']
 letters_set = set(letters)
 
 class Timedelta(object):

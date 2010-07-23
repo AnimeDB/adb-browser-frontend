@@ -1,0 +1,13 @@
+{% extends "collection/browse/base.html" %}
+
+{% block browsetitle %}Sfoglia film per lettera: {{ letter }}{% endblock %}
+
+{% block browsetable %}
+			{% for m in items %}
+			<tr>
+				<td><a href="{{ m.meta_origin }}">{{ m.title }}</a></td>
+				<td>{{ m.year }}</td>
+				<td>{{ m.duration }}</td>
+			</tr>
+			{% endfor %}
+{% endblock %}

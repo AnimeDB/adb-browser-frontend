@@ -7,9 +7,6 @@ PROJECT_BASE = os.path.dirname(DJANGO_BASE)
 
 gettext = lambda s: s
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = ()
 
 PORT = 8000
@@ -77,6 +74,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.media',
     'django.contrib.auth.context_processors.auth',
+    'applications.collection.context_processors.letters',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,5 +97,5 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'collection',
+    'applications.collection',
 )

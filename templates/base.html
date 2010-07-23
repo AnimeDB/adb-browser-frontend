@@ -46,7 +46,35 @@
 		{% if user.is_authenticated() -%}
 		<ul>
 			<li id=""><a href="{% url index %}">Home</a></li>
-			<li id=""><a href="{% url collection_browse %}">Sfoglia</a></li>
+			<li id="browse-menu-item">
+				<a href="{% url collection_browse %}">Sfoglia</a>
+				<ul>
+					<li>
+						<strong>Film</strong>
+						<ul>
+							{% for l in letters %}
+							<li><a href="{% url collection_browse_letter model='movies',letter=l.lower() %}">{{ l }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li>
+						<strong>Generi</strong>
+						<ul>
+							{% for l in letters %}
+							<li><a href="{% url collection_browse_letter model='genres',letter=l.lower() %}">{{ l }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li>
+						<strong>Attori</strong>
+						<ul>
+							{% for l in letters %}
+							<li><a href="{% url collection_browse_letter model='actors',letter=l.lower() %}">{{ l }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+			</li>
 			<li id="">
 				<a href="#">Liste</a>
 				<ul>

@@ -61,10 +61,10 @@ body > nav
                 margin-left: -4em
                 border-left: 1px solid transparent
             
-            &:hover > ul
+            &:hover > ul, &:hover > div
                 display: block
             
-            > ul
+            > ul, > div
                 width: 16em
                 position: absolute
                 top: 100%
@@ -107,4 +107,71 @@ body > nav
                     padding: .3em .2em 
                     width: 16.8em
                     margin: .4em .4em .5em
+                    
+    #browse-menu-item > div
+        width: 20em
+        //left: 50%
+        //margin-left: -10em
+        
+        > ul
+            background: #fff
+            overflow: auto
+        
+        > ul > li
+            +box-sizing(border-box)
+            display: block
+            width: (20em / 3)
+            float: left
+            border: 1px solid #ccc
+            border-top: 0
+            border-right: 0
+            cursor: default
+            
+            &:first-child
+                border-left: 0
+            
+            &.selected
+                //background: #f7f7f7
+                border-bottom-color: transparent
+            
+            &:not(.selected)
+                background: #e6e6e6
+            
+            &:hover:not(.selected)
+                background: #eee
+                cursor: pointer
+            
+            
+            strong
+                display: block
+                text-align: center
+                padding: .6em .6em .5em
+                
+                
+        
+        > table
+            width: 100%
+            display: none
+            //margin-top: -1px
+            background: #f7f7f7
+            
+            &.selected
+                display: table
+            
+            td
+                width: (100% / 7)
+            
+            a:link, a:visited
+                display: block
+                padding: .45em 0 .55em
+                text-align: center
+                border: 1px solid #fff
+                font-size: 1.2em
+                color: #555
+                
+            a:hover
+                background-color: #fff
+                color: #333
+        
+    
     

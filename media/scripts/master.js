@@ -31,3 +31,38 @@ $(function () {
         hideitems('.genres', 8);
     });
 });
+
+
+function tableFromList(list) {
+    var table = $('<table></table>'), row;
+    
+    $('li', list).each(function (n) {
+        if (n % 7 == 0) {
+            row = $('<tr></tr>').appendTo(table);
+        }
+        $('<td></td>').html($(this).html()).appendTo(row);
+    });
+    
+    return table;
+}
+
+
+// Browse menu item support
+$(function () {
+    var container = $('<div></div>').appendTo('#browse-menu-item')
+                                    .append($('#browse-menu-item > ul'));
+    
+    $('#browse-menu-item li ul').each(function (n) {
+        var table = tableFromList(this).appendTo(container);
+        $(this).remove();
+    });
+    
+    $('> ul > li', container).click(function () {
+        var self = $(this);
+        if (!self.hasClass('selected')) {
+            $('.selected', container).removeClass('selected');
+            self.addClass('selected');
+            $('table', container).eq(self.index()).addClass('selected');
+        }
+    }).eq(0).click();
+});
