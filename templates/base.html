@@ -52,25 +52,25 @@
 					<li>
 						<strong>Film</strong>
 						<ul>
-							{% for l in letters %}
+							{%- for l in letters %}
 							<li><a href="{% url collection_browse_letter model='movies',letter=l.lower() %}">{{ l }}</a></li>
-							{% endfor %}
+							{%- endfor %}
 						</ul>
 					</li>
 					<li>
 						<strong>Generi</strong>
 						<ul>
-							{% for l in letters %}
+							{%- for l in letters %}
 							<li><a href="{% url collection_browse_letter model='genres',letter=l.lower() %}">{{ l }}</a></li>
-							{% endfor %}
+							{%- endfor %}
 						</ul>
 					</li>
 					<li>
 						<strong>Attori</strong>
 						<ul>
-							{% for l in letters %}
+							{%- for l in letters %}
 							<li><a href="{% url collection_browse_letter model='actors',letter=l.lower() %}">{{ l }}</a></li>
-							{% endfor %}
+							{%- endfor %}
 						</ul>
 					</li>
 				</ul>

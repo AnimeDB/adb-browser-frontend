@@ -12,14 +12,14 @@
 		
 		<nav>
 			<ul>
-				{% for l in letters %}
+				{%- for l in letters %}
 				<li{% if l == letter %} class="selected"{% endif %}><a href="{% url collection_browse_letter model=model,letter=l.lower() %}">{{ l }}</a></li>
-				{% endfor %}
+				{%- endfor %}
 			</ul>
 		</nav>
 		
 		<table>
-			{% block browsetable %}{% endblock %}
+			{%- block browsetable %}{%- endblock %}
 		</table>
 	</section>
 {% endblock %}

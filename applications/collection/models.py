@@ -93,6 +93,9 @@ class Genre(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering = ('name',)
 
 class Actor(models.Model):
     """
@@ -102,6 +105,9 @@ class Actor(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering = ('name',)
 
 class Movie(models.Model):
     """

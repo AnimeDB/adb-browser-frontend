@@ -16,10 +16,10 @@ def browse(request, model=None, letter=None):
     
     if model:
         model_class, key = models[model]
-    
+        
         if letter:
             letter = letter.upper()
-        
+            
             if letter == letters[-2]:
                 items = model_class.objects.filter(**{
                     '%s__regex' % key: r'^\d.*',
@@ -40,3 +40,4 @@ def browse(request, model=None, letter=None):
         'items': items,
         'model': model,
     }, request)
+

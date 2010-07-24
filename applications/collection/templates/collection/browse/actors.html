@@ -2,10 +2,10 @@
 
 {% block browsetitle %}Sfoglia attori per lettera: {{ letter }}{% endblock %}
 
-{% block browsetable %}
-			{% for m in items %}
+{%- block browsetable %}
+			{%- for m in items %}
 			<tr>
 				<td>{{ m.name }}</td>
 			</tr>
-			{% endfor %}
-{% endblock %}
+			{%- endfor %}
+{%- endblock %}
