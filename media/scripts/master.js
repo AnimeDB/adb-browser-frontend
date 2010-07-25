@@ -46,6 +46,51 @@ function tableFromList(list) {
     return table;
 }
 
+$(function () {
+    /**
+     * Add the inner span to style the buttons correctly.
+     */
+    $('button, .button').wrapInner($('<span></span>'));
+    
+    /**
+     * Add the focus class to surrounding paragraphs of inputs and make they
+     * act as labels.
+     */
+    $('p > input').focus(function () {
+        $(this).parent().addClass('focus');
+    }).blur(function () {
+        $(this).parent().removeClass('focus');
+    }).parent().click(function () {
+        $('input', this).focus();
+    });
+    
+    /**
+     * Focus the list name textbox on page loading.
+     */
+    $('body#lists_create section form input').focus();
+    $('body#login #id_username').focus().select();
+    $('#messages li').each(function () {
+        $(this).append($('<a>×</a>').click(function () {
+            var li = $(this).parent(),
+                ul = li.parent();
+        
+            if ($('li', ul).size() == 1) {
+                ul.slideUp(300, function () {
+                    ul.remove();
+                });
+            } else {
+                li.slideUp(200, function () {
+                    li.remove();
+                    if (!$('li', ul).size()) {
+                        ul.stop().slideUp(200, function () {
+                            ul.remove();
+                        });
+                    }
+                });
+            }
+        }))
+    });
+});
 
 // Browse menu item support
 $(function () {

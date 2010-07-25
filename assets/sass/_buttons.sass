@@ -1,4 +1,4 @@
-button, .button
+button, .button, a.button:visited, a.button:link
     +border-radius(4px)
     +box-sizing(border-box)
     +box-shadow(1px 1px 1px #eee)
@@ -13,6 +13,17 @@ button, .button
     font-size: 1.1em
     -moz-apperance: none
     
+    &.negative
+        border-color: #C98F90
+        color: #892F31
+        
+        &.small
+            color: #9b4d4f
+        
+        span
+            +linear-gradient(color-stops(#fdc3c5, #e28588))
+            text-shadow: 0 1px 0 #ffbbbc
+    
     &:visited
         color: #5a5a5a
 
@@ -25,28 +36,50 @@ button, .button
         padding: 0 1em .1em 1em
         display: inline-block
         width: 100%
-    
-button:not([disabled]), .button:not(.disabled)
-    -webkit-user-focus: ignore
-    -moz-user-focus: ignore
-    user-focus: ignore
-
-    &:hover, &:focus
-        border: 1px solid #aaa
-        background: #fff
-    
-        span
-            +linear-gradient(color-stops(#eee, #c8c8c8))
         
-    &:active span
-        +linear-gradient(color-stops(#ddd, #eee))
-        color: #777
-        text-shadow: 0 -1px 0 #fff
+    &.small
+        font-size: .9em
+        
+        span
+            line-height: 1.8em
+    
+    &:not([disabled]), &:not(.disabled)
+        -webkit-user-focus: ignore
+        -moz-user-focus: ignore
+        user-focus: ignore
+    
+        &:hover, &:focus
+            border: 1px solid #aaa
+            background: #fff
+    
+            span
+                +linear-gradient(color-stops(#eee, #c8c8c8))
+        
+        &:active span
+            +linear-gradient(color-stops(#ddd, #eee))
+            color: #777
+            text-shadow: 0 -1px 0 #fff
+    
+        &.negative
+            &:hover, &:focus
+                border-color: #cb7b7c
+                color: #8d3d3f
+                +box-shadow(rgba(0, 0, 0, 0.15), 0px, 0px, 16px)
+            
+                span
+                    text-shadow: 0 1px 0 #ffa6a7
+                    +linear-gradient(color-stops(#FDB5B7, #d57c7f))
+        
+            &:active
+                span
+                    color: #b0575a
+                    text-shadow: 0 -1px 0 #ffabac
+                    +linear-gradient(color-stops(#e28588, #fdc3c5))
 
-button[disabled], .button.disabled
-    opacity: 0.8
-    cursor: default
-    border-color: #ccc
+    &[disabled], &.disabled
+        opacity: 0.8
+        cursor: default
+        border-color: #ccc
 
-    span
-        color: #999
+        span
+            color: #999

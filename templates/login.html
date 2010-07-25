@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ super() }} · Login{% endblock title %}
+
 {% block bodyid %}login{% endblock %}
 
 {% block content -%}
@@ -25,7 +27,7 @@
 				</p>
 			</fieldset>
 			
-			<button type="submit"><span>Entra</span></button>
+			<button type="submit">Entra</button>
 		</form>
 		
 		<h1>Registrazione?</h1>

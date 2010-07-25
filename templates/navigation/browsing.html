@@ -1,0 +1,30 @@
+
+			<li id="browse-menu-item">
+				<a href="{% url 'collection:browse' %}">Sfoglia</a>
+				<ul>
+					<li>
+						<strong>Film</strong>
+						<ul>
+							{%- for l in letters %}
+							<li><a href="{% url 'collection:browse_per_letter' model='movies',letter=l.lower() %}">{{ l }}</a></li>
+							{%- endfor %}
+						</ul>
+					</li>
+					<li>
+						<strong>Generi</strong>
+						<ul>
+							{%- for l in letters %}
+							<li><a href="{% url 'collection:browse_per_letter' model='genres',letter=l.lower() %}">{{ l }}</a></li>
+							{%- endfor %}
+						</ul>
+					</li>
+					<li>
+						<strong>Attori</strong>
+						<ul>
+							{%- for l in letters %}
+							<li><a href="{% url 'collection:browse_per_letter' model='actors',letter=l.lower() %}">{{ l }}</a></li>
+							{%- endfor %}
+						</ul>
+					</li>
+				</ul>
+			</li>

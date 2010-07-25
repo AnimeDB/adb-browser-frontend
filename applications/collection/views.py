@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import redirect
 from shortcuts import render_to_response
 
 from applications.collection.models import letters, Movie, Genre, Actor
 
-@permission_required('collection.can_browse')
+# @todo: Move model specific permission check inside the method
+@permission_required('collection.browse_movies')
 def browse(request, model=None, letter=None):
     models = {
         'movies': (Movie, 'title'),

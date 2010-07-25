@@ -13,7 +13,7 @@
 		<nav>
 			<ul>
 				{%- for l in letters %}
-				<li{% if l == letter %} class="selected"{% endif %}><a href="{% url collection_browse_letter model=model,letter=l.lower() %}">{{ l }}</a></li>
+				<li{% if l == letter %} class="selected"{% endif %}><a href="{% url 'collection:browse_per_letter' model=model,letter=l.lower() %}">{{ l }}</a></li>
 				{%- endfor %}
 			</ul>
 		</nav>

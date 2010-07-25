@@ -1,9 +1,5 @@
 from django.contrib import admin
-from applications.collection.models import List, Genre, Actor, Movie, Link, Service, Release
-
-class ListAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(List, ListAdmin)
+from applications.collection.models import Genre, Actor, Movie, Link, Service, Release
 
 class GenreAdmin(admin.ModelAdmin):
     pass

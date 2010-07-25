@@ -1,21 +1,27 @@
-#list 
-    > section > ul
-        > li
-            &:nth-child(2n)
-                background: #fff
-        
-            &:hover
-                background: #FFFCEA
+#lists_create
+    form
+        > p
+            text-align: center
             
-                > a
-                    color: #333
+            &.focus
+                background: none
+    
+    section input
+        padding: .45em .6em .5em
+        font-size: 1em
+        width: 20em
+    
+#lists_view
+    h1
+        float: left
+    
+        + .actions
+            float: right
             
-                li a
-                    color: #004080
-        
-            > a
-                padding: .5em 1em .5em 1em
-                display: block
-                text-decoration: none
-                color: #999
-                font-weight: bold
+            .button + .button
+                margin-left: .8em
+            
+            + table
+                clear: both
+    
+    

@@ -21,7 +21,7 @@ form
         + p
             border-top: 1px solid #eee
             
-        &:hover
+        &.focus
             background: rgba(255, 255, 0, .1)
             
             label
@@ -29,4 +29,24 @@ form
 
     button, .button
         margin-left: 10.4em
+    
+    input + button
+        margin-left: 1em
+
+.errorlist
+    margin: 1em 0
+    padding: 1em 1em 1em 2.6em
+    
+    li
+        list-style-type: disc
+
+form.yesno
+    text-align: center
+    margin-top: 2em
+    
+    button, .button
+        width: 10em
+        margin-left: 0
         
+        + button, + .button
+            margin-left: .6em

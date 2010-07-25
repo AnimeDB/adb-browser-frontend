@@ -1,0 +1,43 @@
+#messages
+    +border-radius(4px)
+    margin: 0 auto 3em
+    position: relative
+    width: 68.5em
+    min-height: 1px
+    
+    li
+        //border: 1px solid #e0e0e0
+        background: #fff
+        padding: 1em 1.4em
+    
+    li:first-child
+        +border-top-radius(4px)
+    
+    li:last-child
+        +border-bottom-radius(4px)
+        
+    li.success
+        background: #e0f7c1
+        color: #34681a
+    
+    li + li
+        border-top: 1px solid #f9f9f9
+    
+    a
+        +border-radius(.75em)
+        font-weight: bold
+        float: right
+        display: block
+        cursor: pointer
+        width: 1.5em
+        height: 1.5em
+        line-height: 1.5em
+        text-align: center
+        background: rgba(255, 255, 255, .5)
+        color: #82a571
+        margin: -.15em -.35em 0 0
+        
+        &:hover
+            text-decoration: none
+            color: #1b5200
+            background: rgba(255, 255, 255, .9)

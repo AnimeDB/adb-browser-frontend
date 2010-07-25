@@ -1,7 +1,9 @@
-p
-    margin: 1em 0
+body > section
+    p
+        margin: 1em 0
+        line-height: 1.7em
 
-.error
+.error, .errorlist
     color: #A00000
     background: #ffe2e2
 
@@ -36,15 +38,36 @@ a:hover
 .clear
     clear: both
 
+section h1
+    font-weight: bold
+    font-size: 2em
+    color: #344558
+    margin-bottom: .8em
+    font-family: $serif
+    -webkit-font-smoothing: antialiased
+    
+    sup
+        color: #999
+        font-size: 0.5em
+        font-weight: normal
+        font-family: $sansserif
+        text-transform: uppercase
+
 body > section
     +border-radius(4px)
     +box-shadow(#e9e9e9, 0px, 0px, 20px)
-    width: 750px
+    width: 62.5em
     margin: 0 auto
     padding: 2.2em 3em 2.8em 3em
     background: #fff
     border: 1px solid #e0e0e0
     position: relative
+
+body#confirm section
+    text-align: center
+    
+    h1
+        margin-bottom: 1em
 
 @import "buttons"
 @import "forms"

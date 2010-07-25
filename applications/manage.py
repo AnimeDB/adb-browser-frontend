@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-
-from os.path import join, dirname
-loadapp("config:%s" % join(dirname(__file__), 'config.ini#dev'))
+from paste.deploy import loadapp
+from os.path import join, dirname, realpath
+loadapp("config:%s" % join(dirname(realpath(__file__)), 'config.ini#dev'))
 
 from django.core.management import execute_manager
 try:

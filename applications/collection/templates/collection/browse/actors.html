@@ -1,5 +1,7 @@
 {% extends "collection/browse/base.html" %}
 
+{% block title %}{{ super() }} · Sfoglia attori per lettera: {{ letter }}{% endblock title %}
+
 {% block browsetitle %}Sfoglia attori per lettera: {{ letter }}{% endblock %}
 
 {%- block browsetable %}

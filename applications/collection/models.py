@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from applications.lists.models import List
 
 letters = map(chr, range(ord('A'), ord('Z') + 1)) + ['09', '@!']
 letters_set = set(letters)
@@ -61,30 +62,6 @@ class DurationField(models.IntegerField):
     def get_prep_value(self, value):
         return value.duration
 
-class List(models.Model):
-    """
-    A custom list tied to a given user.
-    """
-    
-    name = models.CharField(max_length=100)
-    user = models.ForeignKey(User)
-    movies = models.ManyToManyField('Movie')
-    
-    class Meta:
-        unique_together = (
-            ('name', 'user'),
-        )
-        
-        permissions = (
-            ("can_use_lists", "Can use lists"),
-        )
-    
-    def __str__(self):
-        return self.name.encode('utf-8')
-    
-    def __unicode__(self):
-        return self.name
-    
 class Genre(models.Model):
     """
     A film genre identified in the system with a unique name.
@@ -96,6 +73,10 @@ class Genre(models.Model):
     
     class Meta:
         ordering = ('name',)
+        permissions = (
+            ('browse_genres', 'Can browse genres'),
+            ('browse_per_genres', 'Can browse movies per genres'),
+        )
 
 class Actor(models.Model):
     """
@@ -108,6 +89,10 @@ class Actor(models.Model):
     
     class Meta:
         ordering = ('name',)
+        permissions = (
+            ('browse_actors', 'Can browse actors'),
+            ('browse_per_actors', 'Can browse movies per actors'),
+        )
 
 class Movie(models.Model):
     """
@@ -127,7 +112,7 @@ class Movie(models.Model):
     
     class Meta:
         permissions = (
-            ('can_browse', 'Can browse movies'),
+            ('browse_movies', 'Can browse movies'),
         )
         
         ordering = (

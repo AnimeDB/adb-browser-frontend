@@ -1,5 +1,7 @@
 {% extends "collection/browse/base.html" %}
 
+{% block title %}{{ super() }} · Sfoglia generi per lettera: {{ letter }}{% endblock title %}
+
 {% block browsetitle %}Sfoglia generi per lettera: {{ letter }}{% endblock %}
 
 {%- block browsetable %}
