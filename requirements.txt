@@ -1,3 +1,13 @@
-Coffin==0.3.3
+Coffin==0.3.3  # from git://github.com/GaretJax/coffin.git
 Django==1.2.1
+Fabric==0.9.0
+Jinja2==2.5
 PIL==1.1.7
+Paste==1.7.4
+PasteDeploy==1.3.3
+PasteScript==1.7.3
+WebOb==0.9.8
+nose==0.11.4
+pyflakes==0.4.0
+twod.wsgi==1.0
+wsgiref==0.1.2

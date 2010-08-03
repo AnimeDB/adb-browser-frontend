@@ -48,11 +48,6 @@ function tableFromList(list) {
 
 $(function () {
     /**
-     * Add the inner span to style the buttons correctly.
-     */
-    $('button, .button').wrapInner($('<span></span>'));
-    
-    /**
      * Add the focus class to surrounding paragraphs of inputs and make they
      * act as labels.
      */

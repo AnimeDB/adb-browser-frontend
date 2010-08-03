@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response as r2r
 from django.template import RequestContext
-from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 
 def render_to_string(template, context={}, request=None):
