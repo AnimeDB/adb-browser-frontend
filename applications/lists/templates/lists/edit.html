@@ -22,7 +22,7 @@
 			{{ form.non_field_errors()|safe }}
 			<p>
 				{{ form.name|safe }}
-				<button type="submit" class="inline">{% if editing %}Rinomina{% else %}Crea{% endif %}</button>
+				<button type="submit" class="inline"><span>{% if editing %}Rinomina{% else %}Crea{% endif %}</span></button>
 			</p>
 		</form>
 	</section>

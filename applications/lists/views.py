@@ -45,9 +45,9 @@ def edit(request, id=None):
                 l = form.save()
                 
                 if id is None:
-                    msg = u"La lista “%s” é stata correttamete creata."
+                    msg = u"La lista “%s” é stata creata correttamete."
                 else:
-                    msg = u"La lista “%s” é stata correttamete rinominata."
+                    msg = u"La lista “%s” é stata rinominata correttamete."
                 
                 messages.success(request, msg % l.name)
                 return redirect(l)

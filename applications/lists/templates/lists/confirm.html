@@ -12,8 +12,8 @@
 		
 		<form action="" method="post" accept-charset="utf-8" class="yesno">
 			{% csrf_token %}
-			<a class="button">No, annulla</a>
-			<button type="submit" class="negative">Si, elimina</button>
+			<a class="button" href="{{ list.get_absolute_url() }}"><span>No, annulla</span></a>
+			<button type="submit" class="negative"><span>Si, elimina</span></button>
 		</form>
 	</section>
 {% endblock %}
