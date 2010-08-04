@@ -42,6 +42,9 @@ class Timedelta(object):
     def __eq__(self, other):
         return other and self.duration == other.duration
     
+    def __nonzero__(self):
+        return bool(self._minutes)
+    
     def __str__(self):
         return str(self.duration)
 
