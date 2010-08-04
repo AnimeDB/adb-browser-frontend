@@ -1,0 +1,25 @@
+{% extends "lists/base.html" %}
+
+{% block title %}{{ super() }} · Le mie liste{% endblock title %}
+
+{% block bodyid %}lists_index{% endblock %}
+
+{% block content %}
+	<section>
+		<h1>Liste personalizzate</h1>
+		
+		<table>
+			{% for list in lists %}
+			<tr>
+				<th><a href="{{ list|url }}">{{ list.name }}</a></th>
+				<td class="highlight"><strong>{{ list.movies.count() }}</strong> film</td>
+				<td>
+					<a href="{% url 'lists:rename' id=list.id %}" class="button small">Rinomina</a>
+					<a href="{% url 'lists:delete' id=list.id %}" class="button small">Elimina</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<p><a class="button small" href="{% url 'lists:create' %}">Crea una nuova lista</a></p>
+	</section>
+{% endblock %}

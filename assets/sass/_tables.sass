@@ -1,0 +1,46 @@
+div.table
+    margin: 0 -.6em
+
+table
+    border-top: 1px solid #ccc
+    width: 100%
+    
+    tr:hover
+        td, th
+            background: #f6f6f6
+            
+        button, a.button
+            opacity: 1
+    
+    td, th
+        +transition(background, .5s)
+        padding: .7em .6em .8em .6em
+        border-top: 1px solid #fff
+        border-bottom: 1px solid #ccc
+        
+        &.highlight
+            text-transform: uppercase
+            color: #888
+            padding-bottom: .2em
+            vertical-align: middle
+            font-family: $font-light
+            letter-spacing: 1px
+            font-size: .9em
+            
+            strong
+                color: #666
+                letter-spacing: 0px
+                font-size: (2.5em / .9)
+        
+        button, a.button
+            opacity: .5
+            +transition(opacity, .5s)
+            min-width: 8em
+            
+            + button,
+            + a.button
+                margin-left: .6em
+            
+            &:focus, &:active, :hover
+                opacity: 1
+            
