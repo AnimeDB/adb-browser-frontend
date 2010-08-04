@@ -1,1 +1,1 @@
-from settings.common import *
+from applications.settings.common import *

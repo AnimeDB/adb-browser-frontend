@@ -7,8 +7,8 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^collection/', include('collection.urls', namespace='collection')),
-    url(r'^lists/', include('lists.urls', namespace='list')),
+    url(r'^collection/', include('applications.collection.urls', namespace='collection')),
+    url(r'^lists/', include('applications.lists.urls', namespace='lists')),
     
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}, name='index'),
     url(r'^login.html$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),

@@ -25,10 +25,10 @@ class VBulletinBackend(ModelBackend):
         
         # The query returns a result if and only if the given password mathces
         # the stored one; else no results are returned.
-        query = """SELECT username, email FROM %s
-                   WHERE username = '%s'
-                   AND MD5(CONCAT('%s', salt)) = password"""
-        cursor.execute(query, [TABLE_NAME, username, password])
+        query = """SELECT username, email FROM {0}
+                   WHERE username = %s
+                   AND MD5(CONCAT(%s, salt)) = password""".format(TABLE_NAME)
+        cursor.execute(query, [username, password])
         
         try:
             username, email = cursor.fetchone()

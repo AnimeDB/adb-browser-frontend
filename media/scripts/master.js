@@ -85,6 +85,14 @@ $(function () {
             }
         }))
     });
+    
+    /**
+     * Automatically wraps the content of buttons and buttonlinks in a span to
+     * provide greater styling.
+     */
+    $('button, a.button').wrapInner('<span/>');
+    
+    $('section table').wrap('<div class="table"/>');
 });
 
 // Browse menu item support

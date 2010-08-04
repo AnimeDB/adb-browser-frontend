@@ -4,10 +4,16 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.shortcuts import redirect, get_object_or_404
 from django.db import IntegrityError
-from shortcuts import render_to_response
+from applications.shortcuts import render_to_response
 
 from applications.lists.models import List
 from applications.lists.forms import ListForm
+
+
+def index(request):
+    return render_to_response('lists/index.html', {
+        'lists': request.user.list_set.all(),
+    }, request)
 
 @permission_required('lists.view_list')
 def view(request, id):

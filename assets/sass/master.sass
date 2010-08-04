@@ -6,9 +6,13 @@
 
 $header_background: #425E87
 $link_hover_background: #FFFCE0
-$link_color: #004080
-$serif: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
-$sansserif: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+$link-color: #27619b
+
+$font-serif: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
+$font-light: 'Helvetica Neue Light', HelveticaNeue-Light, Arial, Helvetica, sans-serif
+$font-content: Helvetica, arial, freesans, clean, sans-serif
+$font-actions: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Geneva", "Verdana", "sans-serif"
+$font-fixed: "Courier New"
 
 html
     height: 100%
@@ -26,7 +30,7 @@ body
     font-size: 12px
     line-height: 1.4em
     background: #F3F3F3
-    font-family: $sansserif
+    font-family: $font-content
 
 footer
     text-align: center
@@ -37,8 +41,8 @@ footer
 @import "header"
 @import "navigation"
 @import "content"
-@import "list"
 @import "details"
 @import "login"
-@import "browse"
 @import "messages"
+@import "applications/browse"
+@import "applications/lists"

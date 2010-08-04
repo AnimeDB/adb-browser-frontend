@@ -1,10 +1,10 @@
 
 			<li id="">
-				<a href="#">Liste</a>
+				<a href="{% url 'lists:index' %}">Liste</a>
 				<ul>
 					{%- for l in request.user.list_set.all() %}
-					<li><a href="{{ l.get_absolute_url() }}">{{ l.name }}</a></li>
+					<li><a href="{{ l|url }}">{{ l.name }}</a></li>
 					{%- endfor %}
-					<li><a href="{% url 'list:create' %}"><em>✚ Crea una nuova lista</em></a></li>
+					<li><a href="{% url 'lists:create' %}"><em>✚ Crea una nuova lista</em></a></li>
 				</ul>
 			</li>

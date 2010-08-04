@@ -9,8 +9,8 @@
 		<h1>{{ list.name }} <sup>lista</sup></h1>
 		
 		<div class="actions">
-			<a href="{% url 'list:rename' id=list.id %}" class="button small"><span>Rinomina</span></a>
-			<a href="{% url 'list:delete' id=list.id %}" class="button small"><span>Elimina</span></a>
+			<a href="{% url 'lists:rename' id=list.id %}" class="button small">Rinomina</a>
+			<a href="{% url 'lists:delete' id=list.id %}" class="button small">Elimina</a>
 		</div>
 		
 		<table></table>

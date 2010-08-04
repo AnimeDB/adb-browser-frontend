@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import permission_required
-from shortcuts import render_to_response
+from applications.shortcuts import render_to_response
 
 from applications.collection.models import letters, Movie, Genre, Actor
 

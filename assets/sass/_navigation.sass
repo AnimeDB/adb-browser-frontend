@@ -8,6 +8,7 @@ body > nav
     position: relative
     z-index: 100
     min-height: 3.75em
+    font-family: $font-actions
     
     > p
         position: absolute
@@ -159,11 +160,14 @@ body > nav
                 display: none
                 //margin-top: -1px
                 background: #f7f7f7
+                border: 0
             
                 &.selected
                     display: table
             
                 td
+                    padding: 0
+                    border: 0
                     width: (100% / 7)
             
                 a:link, a:visited

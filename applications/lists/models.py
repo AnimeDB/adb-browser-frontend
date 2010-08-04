@@ -24,7 +24,7 @@ class List(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('list:view', (), {'id': str(self.id)})
+        return ('lists:view', (), {'id': str(self.id)})
         
     
     def __str__(self):

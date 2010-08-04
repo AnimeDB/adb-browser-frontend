@@ -1,2 +1,2 @@
-from settings.development import *
+from applications.settings.development import *
 
