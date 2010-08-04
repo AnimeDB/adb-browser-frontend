@@ -10,6 +10,7 @@
             float: left
             width: 3em
             margin-left: -6em
+            padding-top: .1em
             
             ul
                 width: 100%
@@ -19,22 +20,23 @@
                 display: block
                 width: 100%
                 font-size: 1.3em
-                line-height: 1.8em
+                line-height: 2.06em
                 
                 text-align: center
                 
                 a
-                    +border-left-radius(4px)
                     display: block
                     border: 1px solid transparent
-                    border-right: 1px solid #ddd
+                    border-right-color: #ddd
                     font-family: Georgia
                     color: #777
                 
                 a:hover
+                    +border-left-radius(4px)
                     background: rgba(255, 255, 255, .9)
                     border-right: 1px solid #ddd
                     color: $link-color
+                    text-decoration: none
                 
                 &.selected
                     a
@@ -61,10 +63,70 @@
                 width: 18em
         
         table
-            width: 100%
-            
-            td
-                line-height: 1.5em
-                padding: .4em .3em
-                border-bottom: 1px solid #ccc
+            tr:hover
+                td, th
+                    background: #f3f3f3
+                    +transition(background, .1s)
+                    
+                .duration
+                    strong
+                        color: #707070
+                    span
+                        color: #888
                 
+                th span
+                    color: #888
+                    +transition(color, .1s)
+                
+            
+            th, td
+                line-height: 1.5em
+                +transition(background, .5s)
+            
+            .duration
+                padding-top: 0
+                padding-bottom: 0
+                font-size: 1em
+                text-align: right
+                width: 1em
+                white-space: nowrap
+                
+                strong
+                    color: #888
+                    margin-right: -.2em
+                    font-size: 1.5em
+                    min-width: 1.5em
+                    display: inline-block
+                
+                span
+                    color: #999
+                    text-transform: uppercase
+                    vertical-align: 40%
+                    font-size: .7em
+                
+                span:last-child
+                    margin-left: .2em
+            
+            th
+                padding: 0
+                
+                a
+                    text-decoration: none
+                    display: block
+                    padding: .6em .6em .5em .6em
+                    
+                    &:hover strong
+                        text-decoration: underline
+                
+                strong
+                    font-size: 1.1em
+                    font-weight: normal
+                
+                span
+                    font-style: italic
+                    color: #bbb
+                    font-size: .9em
+                    margin-left: .5em
+                    +transition(color, .5s)
+                
+            

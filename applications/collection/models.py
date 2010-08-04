@@ -40,7 +40,7 @@ class Timedelta(object):
         return self._minutes % 60
     
     def __eq__(self, other):
-        return self.duration == other.duration
+        return other and self.duration == other.duration
     
     def __str__(self):
         return str(self.duration)
