@@ -89,6 +89,7 @@ MIDDLEWARE_CLASSES = (
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 LOGIN_URL = '/login.html'
+PERMISSIONS_VIEW = 'applications.auth.views.permission_required'
 
 ROOT_URLCONF = 'applications.urls'
 
@@ -103,6 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.messages',
+    'applications.auth',
     'applications.collection',
     'applications.lists',
 )

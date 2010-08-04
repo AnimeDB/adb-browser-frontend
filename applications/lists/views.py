@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from django.contrib.auth.decorators import permission_required
+from django.db import IntegrityError
 from django.contrib import messages
 from django.shortcuts import redirect, get_object_or_404
-from django.db import IntegrityError
+
+from applications.auth.decorators import permission_required, checks_permissions, require_permissions
+from applications.lists.forms import ListForm
+from applications.lists.models import List
 from applications.shortcuts import render_to_response
 
-from applications.lists.models import List
-from applications.lists.forms import ListForm
 
-
+@permission_required('lists.index')
 def index(request):
     return render_to_response('lists/index.html', {
         'lists': request.user.list_set.all(),
     }, request)
+
 
 @permission_required('lists.view_list')
 def view(request, id):
@@ -22,6 +24,7 @@ def view(request, id):
     return render_to_response('lists/view.html', {
         'list': l,
     }, request)
+
 
 @permission_required('lists.delete_list')
 def delete(request, id):
@@ -36,11 +39,14 @@ def delete(request, id):
         'list': l,
     }, request)
 
-@permission_required('lists.add_list')
+
+@checks_permissions
 def edit(request, id=None):
     if id is not None:
+        require_permissions(request.user, 'lists.edit_list')
         instance = get_object_or_404(List, pk=id, user=request.user)
     else:
+        require_permissions(request.user, 'lists.add_list')
         instance = List(user=request.user)
     
     if request.method == 'POST':

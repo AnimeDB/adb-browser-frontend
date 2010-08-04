@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} · Privilegi richiesti{% endblock title %}
+
+{% block bodyid %}permissions{% endblock %}
+
+{% block content -%}
+	<section>
+		<h1>Privilegi richiesti</h1>
+		
+		<p>Per accedere a questa funzionalità sono necessari dei privilegi di cui non disponi (<code>{{ perm }}</code>).</p>
+	</section>
+{%- endblock %}

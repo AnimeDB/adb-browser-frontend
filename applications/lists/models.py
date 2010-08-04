@@ -8,7 +8,7 @@ class List(models.Model):
     
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User)
-    movies = models.ManyToManyField('collection.Movie')
+    movies = models.ManyToManyField('collection.Movie', blank=True)
     
     class Meta:
         unique_together = (

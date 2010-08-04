@@ -44,6 +44,7 @@ class VBulletinBackend(ModelBackend):
             user.is_superuser = False
             user.set_unusable_password()
         
+        # Always update the email
         if user.email != email:
             user.email = email
             user.save()

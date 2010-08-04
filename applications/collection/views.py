@@ -1,30 +1,33 @@
-from django.contrib.auth.decorators import permission_required
+
+
+from applications.auth.decorators import checks_permissions, require_permissions
+from applications.collection import models
 from applications.shortcuts import render_to_response
 
-from applications.collection.models import letters, Movie, Genre, Actor
 
-# @todo: Move model specific permission check inside the method
-@permission_required('collection.browse_movies')
+@checks_permissions
 def browse(request, model=None, letter=None):
-    models = {
-        'movies': (Movie, 'title'),
-        'genres': (Genre, 'name'),
-        'actors': (Actor, 'name'),
+    require_permissions(request.user, 'collection.browse_%s' % model)
+    
+    types = {
+        'movies': (models.Movie, 'title'),
+        'genres': (models.Genre, 'name'),
+        'actors': (models.Actor, 'name'),
     }
     
     items = ()
     
     if model:
-        model_class, key = models[model]
+        model_class, key = types[model]
         
         if letter:
             letter = letter.upper()
             
-            if letter == letters[-2]:
+            if letter == models.letters[-2]:
                 items = model_class.objects.filter(**{
                     '%s__regex' % key: r'^\d.*',
                 })
-            elif letter == letters[-1]:
+            elif letter == models.letters[-1]:
                 items = model_class.objects.filter(**{
                     '%s__regex' % key: r'^\W.*',
                 })
