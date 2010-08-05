@@ -1,0 +1,57 @@
+{% extends "collection/base.html" %}
+
+{% block title %}{{ super() }} · {{ movie.title }} ({{ movie.year }}){% endblock title %}
+
+{% block bodyid %}movie-details{% endblock %}
+
+{% block content -%}
+	<section>
+		<article class="movie" id="movie-{{ movie.id }}">
+			<h1>{{ movie.title }}&nbsp;<span class="year"><span>(</span>{{ movie.year }}<span>)</span></span></h1>
+			
+			<img src="{{ MEDIA_URL }}assets/thumbnails/{{ "%05d"|format(movie.id) }}.jpg" />
+			
+			<div class="duration">{% include "collection/fragments/duration.html" %}</div>
+			
+			<ul class="meta">
+				{%- if movie.original_title %}
+				<li class="original_title">
+					<strong>Titolo originale</strong> {{ movie.original_title }}
+				</li>
+				{%- endif %}
+		
+				{%- if movie.genres %}
+				<li class="genres">
+					<strong>Generi</strong>
+					<ol>
+					{%- for g in movie.genres.all() %}
+						<li><a href="#">{{ g.name.capitalize() }}</a></li>
+					{%- endfor %}
+					</ol>
+				</li>
+				{%- endif %}
+		
+				{%- if movie.cast %}
+				<li class="cast">
+					<strong>Interpreti</strong>
+					<ol>
+					{%- for a in movie.cast.all() %}
+						<li><a href="#">{{ a.name }}</a></li>
+					{%- endfor %}
+					</ol>
+				</li>
+				{%- endif %}
+		
+				{%- if movie.plot %}
+				<li class="plot">
+					<strong>Trama</strong>
+					<blockquote>
+						<p>{{ movie.plot|truncate(330, False, '')|trim }}…</p>
+						<p>Tratto da <a href="{{ movie.meta_origin }}">{{ movie.meta_origin|shorturl(50) }}</a></p>
+					</blockquote>
+				</li>
+				{%- endif %}
+			</ul>
+		</article>
+	</section>
+{%- endblock %}

@@ -1,6 +1,7 @@
-
-
-from applications.auth.decorators import checks_permissions, require_permissions
+from django.shortcuts import get_object_or_404
+from applications.auth.decorators import (checks_permissions,
+                                          require_permissions,
+                                          permission_required)
 from applications.collection import models
 from applications.shortcuts import render_to_response
 
@@ -44,3 +45,12 @@ def browse(request, model=None, letter=None):
         'model': model,
     }, request)
 
+
+@permission_required('collection.display_movie')
+def movie(request, movieid):
+    movie = get_object_or_404(models.Movie, pk=int(movieid))
+    
+    return render_to_response('collection/details/movie.html', {
+        'movie': movie,
+    }, request)
+    

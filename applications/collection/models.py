@@ -127,6 +127,11 @@ class Movie(models.Model):
     
     def __unicode__(self):
         return u'%s (%d)' % (self.title, self.year)
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('collection:movie', (str(self.id),))
+        
 
 #class MoreLink(models.Model):
 #    """

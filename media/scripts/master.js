@@ -1,37 +1,34 @@
 "use strict";
 
-function hideitems(selector, visible) {
-    var element = $(selector),
-        count = $('li', element).size(),
-        link = $('> a', selector),
-        msg  = $('<span>e altri ' + (count - visible) + '.</span>');
-    
-    if (count > visible) {
-        $('li:eq(' + (visible - 1) + ')', element).addClass('last');
-        $('li:gt(' + (visible - 1) + ')', element).addClass('hidden');
-        element.append(msg);
-        
-        if (link.size() == 0) {
-            link = $('<a href="#"></a>').appendTo(element).toggle(function () {
-                $('li', element).removeClass('hidden').removeClass('last');
-                $(this).text('mostra solo i primi ' + visible);
-                $('> span', element).remove();
-            }, function () {
-                hideitems(selector, visible);
-            });
-        }
-        
-        link.text('mostra tutti');
+jQuery.fn.hideitems = function(visible) {
+    if (visible == undefined) {
+        visible = 5
     }
-}
-
-$(function () {
-    $('body#details').each(function () {
-        hideitems('.cast', 5);
-        hideitems('.genres', 8);
+    return this.each(function () {
+        var element = $(this),
+            count = $('li', element).size(),
+            link = $('> a', element),
+            msg  = $('<span>e altri ' + (count - visible) + '.</span>');
+        
+        if (count > visible) {
+            $('li:eq(' + (visible - 1) + ')', element).addClass('last');
+            $('li:gt(' + (visible - 1) + ')', element).addClass('hidden');
+            element.append(msg);
+            
+            if (link.size() == 0) {
+                link = $('<a href="#"></a>').appendTo(element).toggle(function () {
+                    $('li', element).removeClass('hidden').removeClass('last');
+                    $(this).text('mostra solo i primi ' + visible);
+                    $('> span', element).remove();
+                }, function () {
+                    element.hideitems(visible);
+                });
+            }
+            
+            link.text('mostra tutti');
+        }
     });
-});
-
+};
 
 function tableFromList(list) {
     var table = $('<table></table>'), row;
@@ -47,6 +44,12 @@ function tableFromList(list) {
 }
 
 $(function () {
+    /**
+     * Display only the first 'n' items in the cast and genres lists.
+     */
+    $('body#movie-details .cast').hideitems();
+    $('body#movie-details .genres').hideitems(8);
+    
     /**
      * Add the focus class to surrounding paragraphs of inputs and make they
      * act as labels.

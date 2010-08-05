@@ -1,0 +1,117 @@
+#movie-details .movie
+    margin-bottom: 1em
+    
+    h1
+        .year
+            color: #ccc
+            font-size: 0.8em
+            padding-left: .3em
+            
+            span
+                vertical-align: 15%
+                padding: 0 .08em 0 0
+    
+    .meta strong:first-child
+        text-transform: uppercase
+        font-family: $font-actions
+        color: #888
+        line-height: 1.5em
+        font-weight: normal
+        font-size: 0.75em
+    
+    .duration
+        position: absolute
+        top: .95em
+        right: 1em
+        font-size: 2.4em
+        color: #888
+        font-family: $font-serif
+        
+        span
+            vertical-align: 75%
+            text-transform: uppercase
+            font-family: Arial
+            font-size: .32em
+            display: inline-block
+            color: #999
+            margin-left: -.8em
+            
+        strong
+            font-weight: bold
+    
+    .meta
+        padding-left: 174px
+        margin-left: 1.6em
+        
+        > li
+            line-height: 1.5em
+            margin-bottom: 1em
+            font-family: Lucida Grande
+            
+            strong:first-child
+                display: block
+                margin-bottom: .5em
+        
+        .cast, .genres
+            position: relative
+            
+            > span
+                color: #666
+                font-size: .8em
+            
+            > a
+                font-size: .8em
+                position: absolute
+                right: 0
+                top: -3px
+                opacity: .4
+                color: #333
+                +transition-property(opacity)
+                +transition-duration(.3s)
+            
+            &:hover > a
+                color: #004080
+                opacity: 1
+                +transition-property(opacity)
+                +transition-duration(.3s)
+        
+        .cast ol, .genres ol
+            display: inline
+            
+            li
+                display: inline
+                
+                &.hidden
+                    display: none
+                
+                &:after
+                    content: ','
+                
+                &:last-child:after, &.last:after
+                    content: ''
+                
+    > img
+        display: block
+        padding: 2px
+        margin: -3px 1.5em 1.5em -3px
+        border: 1px solid #ccc
+        max-width: 174px
+        width: 174px
+        height: 252px
+        max-height: 300px
+        float: left
+    
+    blockquote p
+        margin: 0
+        
+        &:last-child
+            text-align: right
+            font-style: italic
+            font-size: .8em
+            margin-top: .8em
+        
+        &:nth-last-child(2):after
+            content: " ❚"
+            color: #D4D9E2
+        
+
