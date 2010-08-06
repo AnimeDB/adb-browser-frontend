@@ -1,7 +1,7 @@
 import hashlib
 
 from django.db import connections
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.backends import ModelBackend
 
 class VBulletinBackend(ModelBackend):
@@ -16,6 +16,7 @@ class VBulletinBackend(ModelBackend):
         # @todo: Move the following properties to the settings:
         DATABASE = 'users'
         TABLE_NAME = 'adb2_users'
+        GROUPS = ('Beta testers',)
         
         # Hash the password locally to avoid to transfer it in cleartext on
         # the network
@@ -43,6 +44,9 @@ class VBulletinBackend(ModelBackend):
             user.is_staff = False
             user.is_superuser = False
             user.set_unusable_password()
+            user.save()
+            for g in GROUPS:
+                user.groups.add(Group.objects.get(name=g))
         
         # Always update the email
         if user.email != email:

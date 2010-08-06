@@ -62,7 +62,7 @@ JINJA2_TEMPLATE_LOADERS = (
 )
 
 JINJA2_DISABLED_APPS = (
-    'admin',
+    'admin', 'admindocs',
 )
 
 TEMPLATE_LOADERS = (

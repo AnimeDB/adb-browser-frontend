@@ -10,7 +10,7 @@ from applications.lists.models import List
 from applications.shortcuts import render_to_response
 
 
-@permission_required('lists.index')
+@permission_required('lists.browse_lists')
 def index(request):
     return render_to_response('lists/index.html', {
         'lists': request.user.list_set.all(),
@@ -43,7 +43,7 @@ def delete(request, id):
 @checks_permissions
 def edit(request, id=None):
     if id is not None:
-        require_permissions(request.user, 'lists.edit_list')
+        require_permissions(request.user, 'lists.change_list')
         instance = get_object_or_404(List, pk=id, user=request.user)
     else:
         require_permissions(request.user, 'lists.add_list')

@@ -18,8 +18,8 @@ class List(models.Model):
         ordering = ('name', 'user')
         
         permissions = (
-            ("view_list", "Can view list"),
             ("browse_lists", "Can browse lists"),
+            ("view_list", "Can view list contents"),
         )
     
     @models.permalink

@@ -77,7 +77,7 @@ class Genre(models.Model):
     class Meta:
         ordering = ('name',)
         permissions = (
-            ('browse_genres', 'Can browse genres'),
+            ('browse_genres', 'Can browse genres list'),
             ('browse_per_genres', 'Can browse movies per genres'),
         )
 
@@ -93,7 +93,7 @@ class Actor(models.Model):
     class Meta:
         ordering = ('name',)
         permissions = (
-            ('browse_actors', 'Can browse actors'),
+            ('browse_actors', 'Can browse actors list'),
             ('browse_per_actors', 'Can browse movies per actors'),
         )
 
@@ -115,7 +115,8 @@ class Movie(models.Model):
     
     class Meta:
         permissions = (
-            ('browse_movies', 'Can browse movies'),
+            ('display_movie', 'Can display movie details'),
+            ('browse_movies', 'Can browse movies list'),
         )
         
         ordering = (

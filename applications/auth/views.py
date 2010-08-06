@@ -1,6 +1,8 @@
 from applications.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def permission_required(request, *args, **kwargs):
     
     # @todo: Redirect to the login page if the user is not logged in.
