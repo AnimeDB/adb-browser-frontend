@@ -1,0 +1,24 @@
+{% extends "checker/base.html" %}
+
+{% block title %}{{ super() }} · Release checker{% endblock title %}
+
+{% block bodyid %}checker_index{% endblock %}
+
+{% block content %}
+	<section>
+		<h1>Controlla compatibilità release</h1>
+		
+		<p>Inserisci l'indirizzo della release da controllare nel campo di testo sottostante.<br />Ricorda che attualmente solo le release nella categoria “Streaming › Film” possono venire controllate.</p>
+		
+		<form action="" method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			
+			{{ form.id.errors|safe }}
+			{{ form.non_field_errors()|safe }}
+			<p>
+				{{ form.id|safe }}
+				<button type="submit" class="inline">Controlla</button>
+			</p>
+		</form>
+	</section>
+{% endblock %}

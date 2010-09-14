@@ -67,10 +67,12 @@
 					<li><a href="#">Gestione releases</a></li>
 				</ul>
 			</li>#}
+			{%- include "navigation/tools.html" %}
 		</ul>
 		<p>Benvenuto <span>{{ user.username }}</span> • <a href="{% url logout %}">Esci</a></p>
 		{% else -%}
 		<ul>
+			{%- include "navigation/tools.html" %}
 		</ul>
 		<p>Benvenuto <span>Visitatore</span> • <a href="{% url login %}?next={{ request.path }}">Entra</a></p>
 		{%- endif %}

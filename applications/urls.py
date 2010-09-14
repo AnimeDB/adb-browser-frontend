@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'^collection/', include('applications.collection.urls', namespace='collection')),
     url(r'^lists/', include('applications.lists.urls', namespace='lists')),
     
+    url(r'^checker/', include('applications.checker.urls', namespace='checker')),
+    
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}, name='index'),
     url(r'^login.html$', 'django.contrib.auth.views.login', {'template_name': 'auth/login.html'}, name='login'),
     url(r'^logout.html$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),

@@ -11,10 +11,13 @@ class VBulletinBackend(ModelBackend):
         If the local user does not exist, then create it with the correct
         username and email.
         The created user will not be able to login against the default database.
+        
+        @todo: Check that the given username does not exist with a useable
+               password.
         """
         
         # @todo: Move the following properties to the settings:
-        DATABASE = 'users'
+        DATABASE = 'forum'
         TABLE_NAME = 'adb2_users'
         GROUPS = ('Beta testers',)
         

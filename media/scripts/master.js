@@ -66,6 +66,7 @@ $(function () {
      * Focus the list name textbox on page loading.
      */
     $('body#lists_create section form input').focus();
+    $('body#checker_index section form input').focus();
     $('body#login #id_username').focus().select();
     $('#messages li').each(function () {
         $(this).append($('<a>×</a>').click(function () {

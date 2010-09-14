@@ -107,4 +107,5 @@ INSTALLED_APPS = (
     'applications.auth',
     'applications.collection',
     'applications.lists',
+    'applications.checker',
 )

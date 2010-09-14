@@ -1,0 +1,23 @@
+{% extends "checker/base.html" %}
+
+{% block title %}{{ super() }} · Risultato controllo release #{{ release }}{% endblock title %}
+
+{% block bodyid %}checker_results{% endblock %}
+
+{% block content %}
+	<section>
+		<h1>Risultato controllo release #{{ release }}</h1>
+		
+		<h2>BBCode originale</h2>
+		<pre>{{ content|wordwrap(100) }}</pre>
+		
+		<h2>Analisi collegamenti</h2>
+		
+		<h2>Locandina</h2>
+		
+		<h2>Paternità releases</h2>
+		
+		<h2>Raggruppamento releases</h2>
+		
+	</section>
+{% endblock %}
