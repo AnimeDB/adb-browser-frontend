@@ -15,9 +15,31 @@
 #checker_results
     pre
         margin: 0
-        +border-radius(6px)
-        border: 1px solid #ccc
-        padding: .9em 1em
-        background: #f9f9f9
         font-family: $font-fixed
+        
+        span
+            +border-radius(.5em)
+            background: rgba(255, 128, 0, .1)
+            //display: inline-block
+            white-space: pre
+            padding: .2em .5em
+            margin: -.2em -.5em
+            
+            &:target
+                background: rgba(255, 128, 0, .4)
+                
+    
+    table
+        .icon, .role
+            text-align: center
+            
+    .poster
+        max-width: 174px
+        max-height: 300px
+        padding: 2px
+        border: 1px solid #ccc
+        
+        + .poster
+            margin-left: 1em
+    
         

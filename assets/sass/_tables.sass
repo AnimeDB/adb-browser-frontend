@@ -2,22 +2,28 @@ div.table
     margin: 0 -.6em
 
 table
-    border-top: 1px solid #ccc
     width: 100%
     
-    tr:hover
-        td, th
+    &:not(.code) tr:hover
+        td
             background: #f6f6f6
             
         button, a.button
             opacity: 1
     
     td, th
-        +transition(background, .5s)
         padding: .7em .6em .8em .6em
-        border-top: 1px solid #fff
         border-bottom: 1px solid #ccc
         vertical-align: middle
+    
+    th
+        font-weight: bold
+        border-top: 0
+        opacity: .8
+    
+    td
+        +transition(background, .5s)
+        border-top: 1px solid #fff
         
         &.highlight
             text-transform: uppercase
@@ -44,4 +50,53 @@ table
             
             &:focus, &:active, :hover
                 opacity: 1
+            
+        &.icon
+            padding-top: 0
+            padding-bottom: 0
+            
+            img
+                margin-bottom: -1px
+
+table.code
+    font-family: $font-fixed
+    line-height: 1.6em
+    
+    tr:first-child td
+        border-top: 1px solid #ccc
+    
+    td
+        padding: .5em
+        background: #f9f9f9
+    
+    td:first-child
+        background: #f0f0f0
+        border-right: 1px solid #ccc
+        padding: .5em 0
+    
+    ul
+        text-align: right
+        margin: 0
+        padding-top: 1px
+        
+        li:first-child
+            border-top: 0
+        
+        li
+            display: block
+            border-top: 1px solid #ccc
+            margin-bottom: -1px
+        
+        a
+            display: block
+            padding: 0 .5em 0 1.5em
+            
+
+
+
+
+
+
+
+
             

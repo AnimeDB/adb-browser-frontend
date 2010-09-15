@@ -8,16 +8,99 @@
 	<section>
 		<h1>Risultato controllo release #{{ release }}</h1>
 		
-		<h2>BBCode originale</h2>
-		<pre>{{ content|wordwrap(100) }}</pre>
+		<p>Topic di origine: <a href="http://animedb.tv/forum/showthread.php?{{ release }}">{{ title }}</a></p>
+		
+		<h2>Errori e avvertimenti</h2>
+		<p>Al momento questa funzionalità non è ancora attiva.</p>
 		
 		<h2>Analisi collegamenti</h2>
+		<table>
+			<tr>
+				<th>URL</th>
+				<th>Testo</th>
+				<th class="role">Ruolo</th>
+				<th class="icon"></th>
+			{% for url in urls %}
+			<tr>
+				<td><a href="{{ url[0] }}">{{ url[0].replace('http://', '').replace('www.', '')|shorturl(40) }}</a></td>
+				<td>{{ url[1]|shorturl(50) }}</td>
+				<td class="role">{{ url[2]|replace('Altro', '—') }}</td>
+				<td class="icon">
+					{%- if url[3] == None -%}
+						—
+					{%- elif url[3] == False -%}
+						<img src="{{ MEDIA_URL}}images/icons/tick.png" />
+					{%- else -%}
+						<img src="{{ MEDIA_URL}}images/icons/exclamation.png" title="{{ url[3] }}" />
+					{%- endif -%}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
 		
 		<h2>Locandina</h2>
+		{% for url in images %}
+			<img class="poster" src="{{ url[0] }}" title="{{ url[0] }}" />
+		{% endfor %}
+		
+		<h2>Analisi nomi utente</h2>
+		<table>
+			<tr>
+				<th>Nome rilevato</th>
+				<th>Nome normalizzato</th>
+				<th>Fonte</th>
+				<th class="icon"></th>
+			</tr>
+			{% for upper in uppers %}
+			<tr>
+				<td><a href="#U{{ upper[4] }}">{{ upper[1] }}</td>
+				<td>
+					{%- if upper[0] -%}
+						<a href="http://www.animedb.tv/forum/member.php?{{ upper[0] }}">{{ upper[3] }}</a>
+					{%- else -%}
+						{{ upper[3] }}
+					{%- endif -%}
+				</td>
+				<td>{{ upper[2] }}</td>
+				<td class="icon">
+					{%- if upper[0] -%}
+						{% if upper[1] == upper[3] %}
+						<img src="{{ MEDIA_URL}}images/icons/tick.png" />
+						{%- else -%}
+						<img src="{{ MEDIA_URL}}images/icons/exclamation.png" title="Nome utente senza corrispondenza esatta nel database" />
+						{% endif %}
+					{%- else -%}
+						<img src="{{ MEDIA_URL}}images/icons/cross.png" title="Nome utente non trovato" />
+					{%- endif -%}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
 		
 		<h2>Paternità releases</h2>
+		<p>Al momento questa funzionalità non è ancora attiva.</p>
 		
 		<h2>Raggruppamento releases</h2>
+		<p>Al momento questa funzionalità non è ancora attiva.</p>
 		
+		<h2>BBCode originale</h2>
+		<table class="code">
+			{% set original = content|wordwrap(100) %}
+			{% set lines = original.split("\n")|count() %}
+			<tr>
+				<td>
+					<ul>
+					{% for i in range(lines) %}
+						<li id="L{{ i + 1}}"><a href="#L{{ i + 1}}">{{ i + 1 }}</a></li>
+					{% endfor %}
+					</ul>
+				</td>
+				<td rowspan="{{ lines }}">
+					<pre>{{ content|safe|wordwrap(100)|safe }}</pre>
+				</td>
+			</tr>
+			
+			
+		</table>
 	</section>
 {% endblock %}
