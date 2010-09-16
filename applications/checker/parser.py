@@ -106,7 +106,7 @@ class PostParser(object):
 
         by = (Keyword('by', caseless=True) | Keyword('Upper:', caseless=True)) + Optional(anyBBClose)
         username = (
-            OneOrMore(anyBBTag) + SkipTo(anyBBClose).setResultsName("username").leaveWhitespace() + anyBBClose.leaveWhitespace()
+            OneOrMore(anyBBTag) + SkipTo(anyBBClose).setResultsName("username").leaveWhitespace() + anyBBClose
         ) | (
             OneOrMore(Word(printables.replace('\n', ''), ).leaveWhitespace().setResultsName("username"))
         )
@@ -119,9 +119,8 @@ class PostParser(object):
             username = self.striptags(tokens.username)
             result.append([username, start, end])
         
-        
         pprint.pprint(result)
-
+        
         return result
     
     def stripHTMLTag(self, tag, strip_content=False, html=True):
@@ -169,6 +168,7 @@ class PostParser(object):
             'Risorsa': set(),
             'Ignorato': ignored,
             'errors': set(),
+            'undetected': set(),
             'Altro': all_urls.copy() - ignored,
         }
         
@@ -176,7 +176,9 @@ class PostParser(object):
         
         for tokens, start, end in contentParser.scanString(text):
             url = tokens[1]
-            assert url in all_urls
+            if url not in all_urls:
+                print "Undetected", result['undetected']#.add((url, tokens[2]))
+                continue
             
             result['Altro'].discard(url)
             result['Contenuto'].add((url, ''))
@@ -185,7 +187,9 @@ class PostParser(object):
         
         for tokens, start, end in imgParser.scanString(text):
             url = tokens[1]
-            assert url in all_urls
+            if url not in all_urls:
+                print "Undetected", result['undetected']#.add((url, tokens[2]))
+                continue
             
             if url not in result['Ignorato']:
                 result['Altro'].discard(url)
@@ -195,28 +199,37 @@ class PostParser(object):
         
         for tokens, start, end in urlParser.scanString(text):
             url = tokens[1]
-            assert url in all_urls
+            
+            try:
+                urltext = tokens[2]
+            except IndexError:
+                print "No url text", tokens
+                urltext = ''
+            
+            if url not in all_urls:
+                print "Undetected", result['undetected']#.add((url, tokens[2]))
+                continue
             
             if url not in result['Ignorato']:
                 result['Altro'].discard(url)
                 
                 if self.isresource(url):
-                    result['Risorsa'].add((url, tokens[2]))
+                    result['Risorsa'].add((url, urltext))
                 else:
-                    result['Altro'].add((url, tokens[2]))
+                    result['Altro'].add((url, urltext))
             else:
                 result['Ignorato'].discard(url)
-                result['Ignorato'].add((url, tokens[2]))
+                result['Ignorato'].add((url, urltext))
                 
                 # Search for URLs
-                urls = set([self.normalize_url(u[0]) for u in re.findall(self.url_regex, tokens[2])])
+                urls = set([self.normalize_url(u[0]) for u in re.findall(self.url_regex, urltext)])
 
                 for url in urls:
                     result['Immagine'].discard((url, ''))
                     result['Ignorato'].add((url, ''))
         
         for key, urls in result.iteritems():
-            if key in ('Ignorato', 'errors'):
+            if key in ('Ignorato', 'errors', 'undetected'):
                 continue
             
             for url, title in urls.copy():

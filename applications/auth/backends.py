@@ -17,8 +17,8 @@ class VBulletinBackend(ModelBackend):
         """
         
         # @todo: Move the following properties to the settings:
-        DATABASE = 'forum'
-        TABLE_NAME = 'adb2_users'
+        DATABASE = 'forum_adb2'
+        TABLE_NAME = 'users'
         GROUPS = ('Beta testers',)
         
         # Hash the password locally to avoid to transfer it in cleartext on

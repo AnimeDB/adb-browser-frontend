@@ -31,8 +31,6 @@ def check(request, release):
     DATABASE = 'forum'
     FORUM = 18
     
-    print "Start"
-    
     cursor = connections[DATABASE].cursor()
     
     query = """SELECT p.pagetext, u.username, u.userid, t.title
@@ -45,7 +43,6 @@ def check(request, release):
     
     try:
         content, poster, posterid, title = cursor.fetchone()
-        print "End"
     except TypeError:
         # No results returned, invalid ID or topic not in the allowed forum
         messages.error(request, 'Topic non trovato, assicurati che il topic esista e si trovi nel forum “Streaming › Film.”')
@@ -57,7 +54,7 @@ def check(request, release):
     parser = PostParser()
     result, normalized, uppers = parser.parse(content)
     
-    users = [[posterid, poster, 'Autore']]
+    users = [[posterid, poster, 'Autore', [(None, poster)], 0]]
     
     offset = 0
     
@@ -74,23 +71,42 @@ def check(request, release):
     
     for i, upper in enumerate(uppers):
         content, offset = mark(content, i, upper[1], upper[2], offset)
-        
+        db_users = None
         query = """SELECT userid, username
                    FROM user
-                   WHERE username LIKE %s"""
+                   WHERE username=%s"""
         
-        cursor.execute(query, ['%' + upper[0] + '%'])
+        cursor.execute(query, [upper[0]])
         try:
-            userid, username = cursor.fetchone()
+            db_users = cursor.fetchall()
+            
+            if not db_users:
+                raise TypeError
         except TypeError:
-            # No results returned, invalid username
-            users.append((None, upper[0], 'Testo', 'Non trovato', i))
-        else:
+            try:
+                query = """SELECT userid, username
+                           FROM user
+                           WHERE username LIKE %s"""
+                
+                cursor.execute(query, ['%' + upper[0] + '%'])
+                db_users = cursor.fetchall()
+                
+                if not db_users:
+                    raise TypeError
+            except TypeError:
+                # No results returned, invalid username
+                users.append((None, upper[0], 'Testo', [(None, u'—')], i))
+        
+        if db_users:
+            if len(db_users) is 1:
+                userid = db_users[0][0]
+            else:
+                userid = None
+            username = db_users
+            
             if users[0][0] == userid:
                 if not users[0][2].endswith('e testo'):
                     users[0][2] += ' e testo'
-                    users[0].append(username)
-                    users[0].append(i)
             else:
                 users.append((userid, upper[0], 'Testo', username, i))
     
