@@ -14,6 +14,10 @@ button, .button, a.button:visited, a.button:link
     font-family: $font-actions
     -moz-apperance: none
     
+    &::-moz-focus-inner
+        border: 0
+        padding: 0
+    
     &.negative
         border-color: #C98F90
         color: #892F31
@@ -34,8 +38,8 @@ button, .button, a.button:visited, a.button:link
         +linear-gradient(color-stops(#eee, #ddd))
         text-shadow: 0 1px 0 #fff
         line-height: 1.9em
-        padding: 0 1em .1em 1em
-        display: inline-block
+        padding: .05em 1em .05em 1em
+        display: block
         width: 100%
         
     &.small

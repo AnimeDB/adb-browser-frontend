@@ -5,7 +5,7 @@ table
     width: 100%
     
     &:not(.code) tr:hover
-        td
+        td, th[scope=row]
             background: #f6f6f6
             
         button, a.button
@@ -15,6 +15,7 @@ table
         padding: .7em .6em .8em .6em
         border-bottom: 1px solid #ccc
         vertical-align: middle
+        +transition(background, .5s)
     
     th
         font-weight: bold
@@ -22,7 +23,6 @@ table
         opacity: .8
     
     td
-        +transition(background, .5s)
         border-top: 1px solid #fff
         
         &.highlight

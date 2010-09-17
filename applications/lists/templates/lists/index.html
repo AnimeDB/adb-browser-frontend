@@ -11,7 +11,7 @@
 		<table>
 			{% for list in lists %}
 			<tr>
-				<th><a href="{{ list|url }}">{{ list.name }}</a></th>
+				<th scope="row"><a href="{{ list|url }}">{{ list.name }}</a></th>
 				<td class="highlight"><strong>{{ list.movies.count() }}</strong> film</td>
 				<td>
 					<a href="{% url 'lists:rename' id=list.id %}" class="button small">Rinomina</a>

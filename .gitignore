@@ -1,2 +1,3 @@
 .livereload
 applications/collection.json
+start-server.sh
