@@ -52,11 +52,12 @@
 				<a href="#">Ricerca</a>
 				<ul>
 					<li>
-						<form>
-							<input type="text" placeholder="Ricerca per titolo..." />
+						<form method="get" action="{% url haystack_search %}">
+							<input type="hidden" name="models" value="collection.movie" />
+							<input type="text" name="q" placeholder="Ricerca per titolo..." />
 						</form>
 					</li>
-					<li id=""><a href="#">Ricerca avanzata</a></li>
+					<li><a href="#">Ricerca avanzata</a></li>
 				</ul>
 			</li>
 			{#<li id="">

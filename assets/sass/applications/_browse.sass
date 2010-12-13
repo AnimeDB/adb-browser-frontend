@@ -1,4 +1,4 @@
-#browse
+#browse, #lists_view
     > section
         +pie-clearfix
         
@@ -82,13 +82,14 @@
                 th span
                     color: #888
                     +transition(color, .1s)
-                
+            th
+                font-weight: normal
             
             th, td
                 line-height: 1.5em
                 +transition(background, .5s)
             
-            .duration
+            .duration, .count
                 padding-top: 0
                 padding-bottom: 0
                 font-size: 1em
@@ -112,6 +113,12 @@
                 span:last-child
                     margin-left: .2em
             
+            .count span
+                vertical-align: baseline
+                line-height: 0
+                font-size: .8em
+                padding-left: .3em
+            
             th
                 padding: 0
                 
@@ -129,6 +136,7 @@
                 
                 span
                     font-style: italic
+                    font-weight: normal
                     color: #bbb
                     font-size: .9em
                     margin-left: .5em

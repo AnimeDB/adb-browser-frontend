@@ -9,10 +9,11 @@ button, .button, a.button:visited, a.button:link
     border: 1px solid #C6C6C6
     background: #fff
     cursor: pointer
-    text-align: center
+    text-align: center      
+    text-decoration: none
     font-size: 1.1em
     font-family: $font-actions
-    -moz-apperance: none
+    -moz-appearance: none
     
     &::-moz-focus-inner
         border: 0
@@ -88,3 +89,95 @@ button, .button, a.button:visited, a.button:link
 
         span
             color: #999
+    
+
+.chooser
+    border-bottom: 1px solid transparent
+    display: inline-block
+    position: relative
+    width: 150px
+    margin: 0 0 -1px 0
+    
+    legend
+        display: none
+    
+    &.open
+        border-bottom-color: #c6c6c6
+        margin-bottom: 0
+        
+        button
+            +border-bottom-radius(0px)
+            border-bottom: 0
+            padding-bottom: 0
+            
+            &:hover
+                border-color: #c6c6c6
+            
+            span
+                +border-bottom-radius(0px)
+                +linear-gradient(color-stops(#eee, #c8c8c8))
+                padding-bottom: 0.1em
+        
+        ol
+            display: block
+    
+    button
+        margin: 0
+        vertical-align: -1px
+        margin-bottom: -1px
+        
+        span:after
+            content: " ▾"
+    
+    ol
+        top: 100%
+        +box-sizing(border-box)
+        +border-bottom-radius(4px)
+        width: 100%
+        position: absolute
+        +box-shadow(1px 1px 1px #eee)
+        background: #eee
+        display: none
+        border: 1px solid #c6c6c6
+        border-top: 0
+        margin-top: 1px
+        
+        li
+            border-left: 1px solid #fff
+            border-right: 1px solid #fff
+            border-top: 1px solid rgba(255, 255, 255, .5)
+        
+        li:first-child
+            border-top: 1px solid #fff
+        
+        li:last-child
+            border-bottom: 1px solid #fff
+            +border-bottom-radius(4px)
+        
+        label
+            text-align: left
+            padding: .4em .5em
+            margin: 0
+            width: auto
+            display: block
+            color: #333
+            font-size: .9em
+            text-decoration: none
+        
+            &:hover
+                background: rgba(128, 128, 128, .1)
+                
+        input
+            display: none
+        
+        input + label:before
+            content: "✓"
+            padding: 0 .48em 0 .3em
+            text-align: center
+            visibility: hidden
+        
+        input:checked + label:before
+            visibility: visible
+
+
+

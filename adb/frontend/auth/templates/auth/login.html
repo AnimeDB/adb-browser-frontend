@@ -1,0 +1,37 @@
+{% extends "auth/base.html" %}
+
+{% block title %}{{ super() }} · Login{% endblock title %}
+
+{% block bodyid %}login{% endblock %}
+
+{% block content -%}
+	<section class="login">
+		<form action="" method="POST">
+			<h1>Login!</h1>
+			<input type="hidden" name="next" value="{{ next }}" />
+			{% csrf_token %}
+			
+			{% if form.errors -%}
+			<p class="error">Il nome utente o la password inseriti non sono corretti. Per favore prova di nuovo.</p>
+			
+			{% endif -%}
+			<fieldset>
+				<p>
+					{{ form.username.label_tag()|safe }}
+					{{ form.username|safe }}
+				</p>
+			
+				<p>
+					{{ form.password.label_tag()|safe }}
+					{{ form.password|safe }}
+				</p>
+			</fieldset>
+			
+			<button type="submit">Entra</button>
+		</form>
+		
+		<h1>Registrazione?</h1>
+		<p>Al momento il progetto ADB<sup>2</sup> è in fase beta e non vengono accettati nuovi iscritti.</p>
+		<p>Nuovi account vengono distribuiti ad intervalli regolari sotto forma di inviti ad utenti già esistenti.</p>
+	</section>
+{%- endblock %}

@@ -1,0 +1,27 @@
+{% extends "collection/base.html" %}
+
+{% block bodyid %}browse{% endblock %}
+
+{% block content -%}
+	<section>
+		<h1>{% block browsetitle %}{% endblock %}</h1>
+		
+		<form action="" method="get" accept-charset="utf-8">
+			<input type="search" placeholder="Filtra..."/>
+		</form>
+		
+		{%- block letters %}
+		<nav>
+			<ul>
+				{%- for l in letters %}
+				<li{% if l == letter %} class="selected"{% endif %}><a href="{% url 'collection:browse_per_letter' model=model,letter=l.lower() %}">{{ l }}</a></li>
+				{%- endfor %}
+			</ul>
+		</nav>
+		{%- endblock %}
+		
+		<table>
+			{%- block browsetable %}{%- endblock %}
+		</table>
+	</section>
+{% endblock %}

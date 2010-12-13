@@ -1,0 +1,13 @@
+{% extends "collection/browse/base.html" %}
+
+{% block bodyid %}browse{% endblock %}
+
+{% block title %}{{ super() }} · Sfoglia film per genere: {{ genre.name.capitalize() }}{% endblock title %}
+
+{% block browsetitle %}Sfoglia film per genere: {{ genre.name.capitalize() }}{% endblock %}
+
+{%- block letters %}{% endblock -%}
+
+{%- block browsetable %}
+			{% include "collection/browse/_movietable.html" %}
+{%- endblock %}

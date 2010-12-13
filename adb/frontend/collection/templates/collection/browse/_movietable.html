@@ -1,0 +1,9 @@
+			{%- for m in items %}
+			<tr>
+				<th><a href="{{ m|url }}"><strong>{{ m.title }}</strong> <span>– {{ m.year }}</span></a></th>
+				<td class="duration">
+					{%- if m.duration.hours %}<strong>{{ m.duration.hours }}</strong> <span>or{{ m.duration.hours|pluralize('a','e') }}</span> {% endif -%}
+					{%- if m.duration %}<strong>{{ '{0:02d}'.format(m.duration.minutes) }}</strong> <span>min</span>{% endif -%}
+				</td>
+			</tr>
+			{%- endfor %}

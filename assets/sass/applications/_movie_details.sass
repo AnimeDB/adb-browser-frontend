@@ -39,6 +39,15 @@
         strong
             font-weight: bold
     
+    form
+        margin: 0
+        padding: 0
+        
+        .chooser
+            float: right
+            z-index: 100
+            text-align: right
+    
     .meta
         padding-left: 174px
         margin-left: 1.6em
@@ -52,6 +61,12 @@
                 display: block
                 margin-bottom: .5em
         
+        .lists p
+            margin-top: 0
+            color: #444
+            font-size: .88em
+            font-style: italic
+        
         .cast, .genres
             position: relative
             
@@ -59,37 +74,42 @@
                 color: #666
                 font-size: .8em
             
+            &:hover > a
+                opacity: .7
+                +transition-property(opacity)
+                +transition-duration(0)
+            
             > a
                 font-size: .8em
                 position: absolute
+                z-index: 1
                 right: 0
                 top: -3px
                 opacity: .4
-                color: #333
+                opacity: 0
                 +transition-property(opacity)
                 +transition-duration(.3s)
-            
-            &:hover > a
-                color: #004080
-                opacity: 1
-                +transition-property(opacity)
-                +transition-duration(.3s)
+                
+                &:hover
+                    opacity: 1
         
-        .cast ol, .genres ol
-            display: inline
-            
-            li
+        .cast, .genres, .lists
+            > ol
                 display: inline
+            
+                li
+                    display: inline
                 
-                &.hidden
-                    display: none
+                    &.hidden
+                        display: none
                 
-                &:after
-                    content: ','
+                    &:after
+                        content: ','
+                        color: #666
                 
-                &:last-child:after, &.last:after
-                    content: ''
-                
+                    &:last-child:after, &.last:after
+                        content: ''
+        
     > img
         display: block
         padding: 2px

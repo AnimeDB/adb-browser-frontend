@@ -1,0 +1,14 @@
+{% extends "collection/browse/base.html" %}
+
+{% block title %}{{ super() }} · Sfoglia attori per lettera: {{ letter }}{% endblock title %}
+
+{% block browsetitle %}Sfoglia attori per lettera: {{ letter }}{% endblock %}
+
+{%- block browsetable %}
+			{%- for a in items %}
+			<tr>
+				<th><a href="{{ a|url }}">{{ a.name }}</a></th>
+				<td class="count"><strong>{{ a.movie_set.count() }}</strong> <span>film</span></td>
+			</tr>
+			{%- endfor %}
+{%- endblock %}

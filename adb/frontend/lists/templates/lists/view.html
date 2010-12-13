@@ -1,0 +1,20 @@
+{% extends "lists/base.html" %}
+
+{% block title %}{{ super() }} · {{ list.name }} (lista){% endblock title %}
+
+{% block bodyid %}lists_view{% endblock %}
+
+{% block content %}
+	<section>
+		<h1>{{ list.name }} <sup>lista</sup></h1>
+		
+		<div class="actions">
+			<a href="{% url 'lists:rename' id=list.id %}" class="button small">Rinomina</a>
+			<a href="{% url 'lists:delete' id=list.id %}" class="button small">Elimina</a>
+		</div>
+		
+		<table>
+			{% include "collection/browse/_movietable.html" %}
+		</table>
+	</section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "collection/browse/base.html" %}
+
+{% block title %}{{ super() }} · Sfoglia film per lettera: {{ letter }}{% endblock title %}
+
+{% block browsetitle %}Sfoglia film per lettera: {{ letter }}{% endblock %}
+
+{%- block browsetable %}
+			{% include "collection/browse/_movietable.html" %}
+{%- endblock %}

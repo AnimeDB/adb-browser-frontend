@@ -1,0 +1,14 @@
+{% extends "collection/browse/base.html" %}
+
+{% block title %}{{ super() }} · Sfoglia generi per lettera: {{ letter }}{% endblock title %}
+
+{% block browsetitle %}Sfoglia generi per lettera: {{ letter }}{% endblock %}
+
+{%- block browsetable %}
+			{%- for g in items %}
+			<tr>
+				<th><a href="{{ g|url }}">{{ g.name.capitalize() }}</a></th>
+				<td class="count"><strong>{{ g.movie_set.count() }}</strong> <span>film</span></td>
+			</tr>
+			{%- endfor %}
+{%- endblock %}

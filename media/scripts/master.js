@@ -90,6 +90,62 @@ $(function () {
         }))
     });
     
+    $('fieldset.chooser').each(function () {
+        var l = $('legend', this),
+            s = $('select', this);
+        $('<button/>').text(l.text()).addClass('small').insertAfter(l);
+        $('input[type=submit]', $(this).closest('form')).remove();
+        
+        s.each(function () {
+            var ol = $('<ol></ol>');
+            $('option', this).each(function () {
+                var li = $('<li></li>')
+                li.append($('<input type="checkbox"></input>')
+                    .attr('name', s.attr('name'))
+                    .attr('value', $(this).attr('value'))
+                    .attr('id', s.attr('id') + '-' + $(this).attr('value'))
+                    .attr('checked', $(this).attr('selected')));
+                li.append($('<label></label>')
+                    .attr('for', s.attr('id') + '-' + $(this).attr('value'))
+                    .text($(this).text())
+                );
+                
+                li.appendTo(ol);
+            });
+            ol.insertAfter(s);
+            $(this).remove();
+        });
+    });
+    
+    $('.chooser button').click(function (e) {
+        e.preventDefault()
+        
+        var c = $(this).closest('.chooser'),
+            f = c.closest('form');
+        
+        if (!c.hasClass('open')) {
+            // Otherwise the event propagation would fire the body callback
+            // straight away
+            e.stopPropagation();
+            
+            $('body').one('click', function () {
+                c.removeClass('open');
+                
+                // Save the changes if needed
+                // @TODO: Add a visible spinner
+                console.log("Saving...")
+                $.post(f.attr('action'), f.serialize(), function () {
+                    console.log("OK");
+                });
+            });
+            c.addClass('open');
+        }
+    });
+    
+    $('.chooser ol').click(function(e){
+        e.stopPropagation();
+    });
+    
     /**
      * Automatically wraps the content of buttons and buttonlinks in a span to
      * provide greater styling.

@@ -1,0 +1,56 @@
+[
+    {
+        "pk": 2, 
+        "model": "auth.group", 
+        "fields": {
+            "name": "Beta testers", 
+            "permissions": [
+                [
+                    "browse_actors", 
+                    "collection", 
+                    "actor"
+                ], 
+                [
+                    "browse_genres", 
+                    "collection", 
+                    "genre"
+                ], 
+                [
+                    "browse_movies", 
+                    "collection", 
+                    "movie"
+                ], 
+                [
+                    "display_movie", 
+                    "collection", 
+                    "movie"
+                ], 
+                [
+                    "add_list", 
+                    "lists", 
+                    "list"
+                ], 
+                [
+                    "browse_lists", 
+                    "lists", 
+                    "list"
+                ], 
+                [
+                    "change_list", 
+                    "lists", 
+                    "list"
+                ], 
+                [
+                    "delete_list", 
+                    "lists", 
+                    "list"
+                ], 
+                [
+                    "view_list", 
+                    "lists", 
+                    "list"
+                ]
+            ]
+        }
+    }
+]
